@@ -5,9 +5,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/** Card Slider **/
+
+
+
+$i: 0;
+@for $i from 0 through 6 {
+.cards-slider.active-slide-#{$i} #card-#{$i} {
+  opacity: 1;
+  transform: scale(1);
+  background-color: #f3f3f3;
+  border-color: #f3f3f3;
+  .details {
+    opacity: 1;
+  }
+}
+}
+
+
+
+
