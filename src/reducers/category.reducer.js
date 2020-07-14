@@ -1,4 +1,4 @@
-import { GET_PRODUCTS, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_ERR, CREATE_PRODUCT, CREATE_PRODUCT_SUCCESS } from '../action_types/product.types'
+import { GET_CATEGORIES_SUCCESS, GET_CATEGORIES, GET_CATEGORIES_ERR } from '../action_types/category.types'
 
 
 const initState = {
@@ -7,27 +7,23 @@ const initState = {
     error: ''
 }
 
-export const productReducer = (state = initState, action) => {
+export const categoryReducer = (state = initState, action) => {
     switch (action.type) {
-        case CREATE_PRODUCT:
-            return action.product
-        case CREATE_PRODUCT_SUCCESS:
-            return state
-        case GET_PRODUCTS:
+        case GET_CATEGORIES:
             return {
                 ...state,
                 data: [],
                 loading: true,
                 error: ''
             }
-        case GET_PRODUCTS_SUCCESS:
+        case GET_CATEGORIES_SUCCESS:
             return {
                 ...state,
                 data: action.payload,
                 loading: false,
                 error: ''
             }
-        case GET_PRODUCTS_ERR:
+        case GET_CATEGORIES_ERR:
         return {
             ...state,
             data: [],

@@ -16,13 +16,17 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import { isAuthenticated } from '../helper_methods/index'
+import {logoutUser} from '../actions/user.action'
+import { useHistory } from 'react-router-dom'
 
-const Example = (props) => {
+const Header = (props) => {
 
   const theme = useSelector(state => state.theme)
   const navState = useSelector(state => state.isOpen)
   const dispatch = useDispatch()
-
+  const history = useHistory()
+  
   return (
       <Navbar light expand="md" style={{ backgroundColor: theme.background_color }}>
         <NavbarBrand href="/" style={{color: theme.text_color}}>ecommerce</NavbarBrand>
@@ -39,25 +43,32 @@ const Example = (props) => {
             
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle style={{ color: theme.text_color }} nav caret>
-                social
+                user
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem style={{ color: theme.text_color }}>
-                  Option 1
+                
+              {!isAuthenticated() && (
+                 <NavLink style={{ color: theme.text_color }} href='login'>login</NavLink> 
+              )}
+              {isAuthenticated() && (
+                 <DropdownItem onClick={() => dispatch(logoutUser()).then(() => history.push('/'))}>logout</DropdownItem>
+              )}
+           
                 </DropdownItem>
                 <DropdownItem style={{ color: theme.text_color }}>
-                  Option 2
+                
+              <NavLink style={{ color: theme.text_color }} href="signup">signup</NavLink>
+            
                 </DropdownItem>
                 
-                <DropdownItem style={{ color: theme.text_color }}>
-                  Reset
-                </DropdownItem>
+               
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem>
               {theme.status === 'light' ?
-                <button onClick={() => dispatch(toggleTheme(darkMode))}>Dark Mode</button> :
-                <button onClick={() => dispatch(toggleTheme(lightMode))}>Light Mode</button>
+                <DropdownItem style={{ backgroundColor: theme.text_color, color: 'white' }} onClick={() => dispatch(toggleTheme(darkMode))}>Dark Mode</DropdownItem> :
+                <DropdownItem style={{ backgroundColor: theme.text_color, color: 'white' }} onClick={() => dispatch(toggleTheme(lightMode))}>Light Mode</DropdownItem>
               } 
             </NavItem>
           </Nav>
@@ -66,4 +77,4 @@ const Example = (props) => {
   );
 }
 
-export default Example;
+export default Header;

@@ -7,7 +7,11 @@ import About from './pages/about.page'
 import Contact from './pages/contact.page'
 import Shop from './pages/shop.page'
 import Header from './components/header.component'
-
+import PrivateRoute from './components/auth/PrivateRoute.component'
+import AdminRoute from './components/auth/AdminRoute.component'
+import Dashboard from './pages/user/dashboard.page'
+import AdminDashboard from './pages/admin/dashboard.page'
+import CreateProduct from './pages/admin/create_product.page'
 const Routes = () => (
     <BrowserRouter>
         <Header />
@@ -18,6 +22,9 @@ const Routes = () => (
             <Route path="/about" exact component = { About } />
             <Route path="/contact" exact component = { Contact } />
             <Route path="/shop" exact component = { Shop } />
+            <PrivateRoute path="/user/dashboard" exact component = { Dashboard } />
+            <AdminRoute path="/admin/dashboard" exact component = { AdminDashboard } />
+            <AdminRoute path="/admin/create/product" exact component = { CreateProduct } />
         </Switch>
     </BrowserRouter>
 )

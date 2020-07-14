@@ -4,11 +4,13 @@ import { sliderReducer } from './slider.reducer'
 import { navReducer } from './nav.reducer'
 import { productReducer } from './product.reducer'
 import { userReducer } from './user.reducer'
+import { categoryReducer } from './category.reducer'
 export const rootReducer = combineReducers({
     theme: themeReducer,
     slider: sliderReducer,
     isOpen: navReducer,
     products: productReducer,
-    user: userReducer
+    user: userReducer,
+    category: categoryReducer
 })
 

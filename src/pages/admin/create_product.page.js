@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { useSelector } from 'react-redux'
-import  SignupForm from '../../components/forms/signup_form.component'
+import  ProductForm from '../../components/forms/product_form.component'
 
-const Signup = () => {
+const CreateProduct = () => {
     
     const theme = useSelector(state => state.theme)
      
@@ -12,7 +12,7 @@ const Signup = () => {
         <Container fluid>
             <Row style={{borderLeft: `2px solid ${theme.text_color}` , borderRight: `2px solid ${theme.text_color}`, borderTop: `2px solid ${theme.text_color}`}}>
                 <Col>
-                    <h1 >Apply For Our Trade Program!</h1>
+                    <h1 >Create A New Product</h1>
                 </Col>
             </Row>
             <Row style={{border: `2px solid ${theme.text_color}`}}>
@@ -22,9 +22,9 @@ const Signup = () => {
 
                 <Col xs ="5" 
                      style={{ borderLeft: `2px solid ${theme.text_color}` }}>
-                         <h2 className="mb-4 mt-4 text-center">Signup</h2>
-                         <p className="text-center mb-4 mb-4">Welcome to our signup form! Create an account with us to keep track of your orders, favorites and shipping!</p>
-                    <SignupForm />
+                         <h2 className="mb-4 mt-4 text-center">Create Product</h2>
+                         <p className="text-center mb-4 mb-4">Please fill out the fields below and click submit in order to create a new product.</p>
+                    <ProductForm />
                 </Col>
             </Row>
 
@@ -32,4 +32,4 @@ const Signup = () => {
     )
 }
 
-export default Signup
+export default CreateProduct

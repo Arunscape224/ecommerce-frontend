@@ -4,13 +4,13 @@ import { Container, Row, Col } from 'reactstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { slideRight, slideLeft } from '../actions/slider.action'
 import { getProducts } from '../actions/product.action'
-
 const Home = () => {
     const dispatch = useDispatch()
     const slider = useSelector(state => state.slider)
   
     useEffect(() => {
         dispatch(getProducts())
+        
     }, [dispatch])
 
     return (

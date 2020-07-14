@@ -26,7 +26,7 @@ const Shop = () => {
                         border: `2px solid ${theme.text_color}`
                     }}>
                     {
-                        products.data.map((product) => <div>{product.name}</div>)
+                        products.data.map((product) => <div key={product._id}>{product.name}</div>)
                     }
                 </Col>
             </Row>

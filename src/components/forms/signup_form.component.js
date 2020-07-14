@@ -41,7 +41,7 @@ const SignupForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-            setValues({ ...values, loading: true })
+            setValues({ ...values })
         dispatch(createUser(formData)).then(() => {
             setValues({ 
                 ...values,
@@ -50,9 +50,7 @@ const SignupForm = () => {
                 bio: '',
                 email: '',
                 password: '',
-                photo: '',
-                loading: false,
-
+                photo: ''
              })
         }).then(() => history.push('/'))
 
