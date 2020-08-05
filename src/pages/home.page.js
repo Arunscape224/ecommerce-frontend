@@ -7,7 +7,9 @@ import { getProducts } from '../actions/product.action'
 const Home = () => {
     const dispatch = useDispatch()
     const slider = useSelector(state => state.slider)
-  
+    const products = useSelector(state => state.products)
+    const firstSix = products.data.slice(0, 6)
+    
     useEffect(() => {
         dispatch(getProducts())
         
@@ -21,7 +23,7 @@ const Home = () => {
               </div>
           <Row>
             <Col>
-              <CardSlider />
+              <CardSlider products={firstSix} />
             </Col>
           </Row>
       </Container>

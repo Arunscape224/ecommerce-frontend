@@ -9,7 +9,7 @@ export const CardsSlider = styled.div`
         content: '';
         display: block;
         width: 100%;
-        height: 264px;
+        height: 315px;
         position: absolute;
         top: 0;
         left: 0;

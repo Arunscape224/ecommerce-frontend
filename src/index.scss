@@ -6,6 +6,39 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  h1 {
+    margin-bottom: 0;
+  }
+  
+
+  .fraction {
+    font-variant-numeric: diagonal-fractions;
+  }
+
+  .grid-container{
+    margin: 20px auto;
+    
+    display: grid;
+  
+    width: 100%;
+    //Using auto-fill and auto-fit
+    grid-template-rows: repeat(2, minmax(150px, min-content));
+    grid-template-columns: repeat(auto-fill,100px);
+    grid-template-columns: repeat(auto-fit,100px);
+    grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
+  
+    
+    .grid-item{
+      padding: 10px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 20px;
+      
+      
+     }
+    
+   }
+  
 }
 
 code {

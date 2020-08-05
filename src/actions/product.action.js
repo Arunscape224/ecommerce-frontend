@@ -1,14 +1,12 @@
-import { GET_PRODUCTS, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_ERR, CREATE_PRODUCT, CREATE_PRODUCT_SUCCESS } from '../action_types/product.types'
+import { GET_PRODUCTS, GET_PRODUCTS_SUCCESS, GET_SINGLE_PRODUCT, GET_SINGLE_PRODUCT_SUCCESS, GET_SINGLE_PRODUCT_ERR, GET_PRODUCTS_ERR, CREATE_PRODUCT, CREATE_PRODUCT_SUCCESS } from '../action_types/product.types'
 import axios from 'axios'
-
-const url = "http://localhost:8000/api/products"
 
 export const getProducts = () => {
     return async dispatch => {
         dispatch({
             type: GET_PRODUCTS,
         })
-        return await axios.get(url)
+        return await axios.get('http://localhost:8000/api/products')
                 .then(res => {
                     dispatch({
                         type: GET_PRODUCTS_SUCCESS,
@@ -18,6 +16,27 @@ export const getProducts = () => {
                 .catch(error => {
                     dispatch({
                         type: GET_PRODUCTS_ERR,
+                        payload: ''
+                    })
+                })
+    }
+}
+
+export const getSingleProduct = (product) => {
+    return async dispatch => {
+        dispatch({
+            type: GET_SINGLE_PRODUCT,
+        })
+        return await axios.get(`http://localhost:8000/api/product/${product}`)
+                .then(res => {
+                    dispatch({
+                        type: GET_SINGLE_PRODUCT_SUCCESS,
+                    })
+                    return res.data
+                })
+                .catch(error => {
+                    dispatch({
+                        type: GET_SINGLE_PRODUCT_ERR,
                         payload: ''
                     })
                 })

@@ -5,7 +5,7 @@ import { isAuthenticated } from '../../helper_methods/index'
 const AdminRoute = ({ component: Component, ...rest }) => {
     let history = useHistory()
     return (
-        <Route {...rest} render={props => isAuthenticated() && isAuthenticated().user.admin === true ? (<Component {...props}/>) : history.push('/')}/>
+        <Route {...rest} render={props => isAuthenticated() && isAuthenticated().user.admin === true ? (<Component {...props}/>) : history.push('/login')}/>
     )
 }
 

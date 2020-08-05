@@ -38,7 +38,7 @@ const Header = (props) => {
             </NavItem>
             
             <NavItem>
-              <NavLink style={{ color: theme.text_color }} href="shop">shop</NavLink>
+              <NavLink style={{ color: theme.text_color }} href="/shop">shop</NavLink>
             </NavItem>
             
             <UncontrolledDropdown nav inNavbar>

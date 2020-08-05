@@ -28,3 +28,16 @@ export const isAuthenticated = () => {
         return false;
     }
 };
+
+
+export const getReviewAvg = (ratings) => {
+    let sum
+    let length = ratings.length
+    ratings.reduce((a, b) => {
+        sum = a + b
+        return sum
+    }) 
+    let result = (sum / length)
+    return result.toFixed(1)
+    
+}
