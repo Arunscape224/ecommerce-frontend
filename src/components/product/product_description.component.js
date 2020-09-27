@@ -1,9 +1,7 @@
 import React from 'react'
-import { Container, UncontrolledCollapse, Card } from 'reactstrap'
-import { useSelector } from 'react-redux'
+import { Container, UncontrolledCollapse } from 'reactstrap'
 
 const ProductDescription = ({ description }) => {
-    const theme = useSelector(state => state.theme)
     if (description) {
         return (
             <Container fluid>

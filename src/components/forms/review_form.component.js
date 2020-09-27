@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Form, Button, FormGroup, Input } from 'reactstrap'
 // import {useDropzone} from 'react-dropzone'
 import { useSelector, useDispatch } from 'react-redux'
-import { createReview, getReviews } from '../../actions/review.action'
-import { useHistory } from "react-router-dom";
+import { createReview } from '../../actions/review.action'
 import Rating from 'react-rating'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faStar as faStarO } from '@fortawesome/free-regular-svg-icons'
@@ -13,7 +12,6 @@ const ReviewForm = ({ product, fetchReviews }) => {
     
     const theme = useSelector(state => state.theme)
     const dispatch = useDispatch()
-    let history = useHistory();
     const jwt = JSON.parse(localStorage.getItem('jwt'))
 
     const [values, setValues] = useState({
@@ -30,7 +28,7 @@ const ReviewForm = ({ product, fetchReviews }) => {
 
 
    
-    const { userTrade, productId, subject, textBody, rating, formData } = values
+    const { subject, textBody, rating, formData } = values
 
     const handleChange = name => event => {
         const value = event.target.value

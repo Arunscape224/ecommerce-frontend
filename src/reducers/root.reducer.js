@@ -6,6 +6,9 @@ import { productReducer } from './product.reducer'
 import { reviewReducer } from './review.reducer'
 import { userReducer } from './user.reducer'
 import { categoryReducer } from './category.reducer'
+import { braintreeReducer } from './braintree.reducer'
+import { orderReducer } from './order.reducer'
+
 export const rootReducer = combineReducers({
     theme: themeReducer,
     slider: sliderReducer,
@@ -13,6 +16,8 @@ export const rootReducer = combineReducers({
     products: productReducer,
     reviews: reviewReducer,
     user: userReducer,
-    categories: categoryReducer
+    categories: categoryReducer,
+    braintree: braintreeReducer,
+    order: orderReducer
 })
 

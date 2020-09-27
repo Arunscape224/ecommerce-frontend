@@ -11,7 +11,7 @@ const AvgRating = ({ reviews, theme }) => {
     useEffect(() => {
       
         if(reviews.length) {
-            if(reviews.length != 1) {
+            if(reviews.length !== 1) {
                 let result = reviews.map(a => a.rating);
                 setRatings(result)
             }
@@ -32,8 +32,7 @@ const AvgRating = ({ reviews, theme }) => {
                             emptySymbol={<FontAwesomeIcon style={{ color: theme.text_color }} icon={faStarO} />}
                             fullSymbol={<FontAwesomeIcon style={{ color: theme.text_color }} icon={faStar} />}
                             initialRating={avg}
-                            readonly
-            /> 
+                            readonly/> 
 
             <em className="ml-2">({avg})</em>
         </>

@@ -1,0 +1,6 @@
+export const BUY = 'BUY'
+export const BUY_SUCCESS = 'BUY_SUCCESS'
+export const BUY_ERR = 'BUY_ERR'
+export const PROCESS_PAYMENT = 'PROCESS_PAYMENT'
+export const PROCESS_PAYMENT_SUCCESS = 'PROCESS_PAYMENT_SUCCESS'
+export const PROCESS_PAYMENT_ERR = 'PROCESS_PAYMENT_ERR'

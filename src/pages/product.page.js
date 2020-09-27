@@ -11,11 +11,17 @@ import ProductInfo from '../components/product/product_info.component'
 import ProductDescription from '../components/product/product_description.component'
 import ProductSize from '../components/product/product_size.component'
 import ProductFinish from '../components/product/product_finish.component'
+import ProductColor from '../components/product/product_color.component'
 import Calculator from '../components/calculator/calculator_container.component'
+import AddToCartButton from '../components/add_to_cart_button.component'
+import { Link } from 'react-router-dom'
+import ProductQuantitySelector from '../components/product/product_quantity_selector.component'
+import { CalculateQty } from '../helper_methods/index'
 
 const Product = (props) => {
     const [product, setProduct] = useState({})
     const [reviews, setReviews] = useState([])
+    const [qty, setQty] = useState(1)
     const theme = useSelector(state => state.theme)
     const dispatch = useDispatch()
     const jwt = JSON.parse(localStorage.getItem('jwt'))
@@ -27,6 +33,11 @@ const Product = (props) => {
         })
     }
 
+
+    const submitCalculator = async (sf) => {
+        setQty(CalculateQty(sf, product.sfPerBox))
+        // console.log(CalculateQty(sf, product.sfPerBox))
+    }
     
     
     useEffect(() => {
@@ -34,9 +45,9 @@ const Product = (props) => {
         fetchReviews()
     }, [dispatch, reviews.length])
     
-    const { name, description, soldPer, price, pcPerBox, sfPerBox, sfPerPiece, size, thickness, finish  } = product
+    const { name, description, soldPer, price, pcPerBox, sfPerBox, sfPerPiece, size, thickness, finish, color  } = product
     return (
-        <Container fluid>
+        <Container fluid="xl" className="mt-3">
             <Row>
                 <Col sm="6">
                     <Image product={product} url="product"/>
@@ -44,23 +55,27 @@ const Product = (props) => {
                 <Col sm="6">
 
                     <Row className="d-block pl-3 pr-3">
-                        <h1>{name}</h1>
-                       
+                        <h1>{name}</h1>        
                         <AvgRating reviews={reviews} theme={theme}/>
                         <p>${price} / {soldPer}</p>
                     </Row>
 
-                   
-                    <ProductInfo pcPerBox={pcPerBox}
-                                 sfPerBox={sfPerBox}
-                                 sfPerPiece={sfPerPiece}/>
+                    <ProductInfo pcPerBox={pcPerBox} sfPerBox={sfPerBox} sfPerPiece={sfPerPiece}/>
 
-                    <Calculator />
-                     <ProductSize thickness={thickness}
-                                     size={size} />
+                    
+                    
+                     <ProductSize thickness={thickness} size={size} />
                      <ProductFinish finish={finish}/>
+                     <ProductColor color={color}/>
+
+                        <Calculator submitCalculator={submitCalculator}/>
+                        <AddToCartButton product={product} qty={qty} />
+                        <ProductQuantitySelector qty={qty} setQty={setQty} soldPer={soldPer} /> 
+
+
 
                 </Col>
+                
             </Row>
 
             {/* buttons */}
@@ -84,9 +99,9 @@ const Product = (props) => {
 
             <ProductDescription description={description} />
             
-            <Card>
+            <Card className="mt-4">
                 <ReviewContainer reviews={reviews} />
-            { jwt ? <ReviewForm product={product} fetchReviews={fetchReviews}/> : <div>please log in to leave a review</div> }
+            { jwt ? <ReviewForm product={product} fetchReviews={fetchReviews}/> : <div className="p-4 ml-3">please <Link to="/login">login</Link> to leave a review</div> }
             </Card>
         </Container>
     )

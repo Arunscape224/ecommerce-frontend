@@ -13,7 +13,7 @@ const ShopCard = ({ product }) => {
                {
                    hovering ? 
                    <p className="text-muted ">${product.price} / {product.soldPer}</p> :
-                   <p style={{color: theme.background_color}}>show</p>
+                   <p style={{color: theme.background_color, height: '30px'}}></p>
                }
             </div>
   

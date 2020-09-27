@@ -9,6 +9,12 @@ body {
   h1 {
     margin-bottom: 0;
   }
+
+  .jumbotron {
+    background-color: white;
+  }
+
+  
   
 
   .fraction {
@@ -63,6 +69,40 @@ $i: 0;
 }
 }
 
+.clear-button {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
 
+
+@media (min-width: 576px) {
+
+.jumbotron {
+    padding: 2rem 2rem !important;
+}
+
+
+}
+@media (max-width: 1000px) {
+
+  .responsive-column {
+    flex-direction: column;
+    
+  }
+
+  #name-price-responsive {
+      flex-direction: row !important;
+      align-items: center;
+      margin: 10px;
+      width: 100% !important;
+  }
+  
+
+
+}
 
 

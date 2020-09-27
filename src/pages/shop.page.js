@@ -8,10 +8,8 @@ import ShopCard from '../components/product/shop_card.component'
 
 const Shop = () => {
     const dispatch = useDispatch()
-    const theme = useSelector(state =>  state.theme)
     const products = useSelector(state =>  state.products)
     const categories = useSelector(state =>  state.categories)
-
     useEffect(() => {
         dispatch(getProducts())
         dispatch(getCategories())
@@ -21,19 +19,14 @@ const Shop = () => {
         <Container fluid>
             <Row>
                 <Col xs={12}
-                    style={{ 
-                        border: `2px solid ${theme.text_color}`
-                    }}>
-                    <h2 onClick={() => console.log(categories.data)}>Shop</h2>
+                     className="border p-4">
+                    <h2 onClick={() => console.log(categories)}>Shop</h2>
                 </Col>
-                <Col xs={12}
-                    style={{ 
-                        border: `2px solid ${theme.text_color}`
-                    }}>
+                <Col xs={12}>
                     <Row>
                         <div className="grid-container">
                         {
-                          products.data ? products.data.map((product) => <Link to={`/product/${product._id}`}><ShopCard product={product} key={product._id}></ShopCard></Link>) : <h1>Loading...</h1>
+                          products.data ? products.data.map((product) => <Link key={product._id} to={`/product/${product._id}`}><ShopCard product={product}/></Link>) : <h1>Loading...</h1>
                         }
                         </div>
                     </Row>

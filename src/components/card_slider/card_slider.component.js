@@ -9,7 +9,9 @@ const CardSlider = ({ products }) => {
     const slider = useSelector(state => state.slider)
     
     return (
+        
         <GradientWrapper onClick={() => console.log(products)}>
+           
             <CardsSlider borderColor={theme.text_color} className={`cards-slider active-slide-${slider.property.index}`}>
             <CardSliderWrapper  className="cards-slider-wrapper"
                   style={{ 
@@ -22,6 +24,7 @@ const CardSlider = ({ products }) => {
             </CardSliderWrapper>
         </CardsSlider>
         </GradientWrapper>
+        
     )
 }
 

@@ -1,13 +1,11 @@
 import React from 'react'
 import { Row } from 'reactstrap'
-import { faRulerCombined } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ProductSize = ({ size, thickness }) => {
     if (size) {
     return (
     <Row className="pl-3 pr-3 mt-0">
-        <div><FontAwesomeIcon className="mr-2" icon={faRulerCombined}/>{size} x <span className="fraction">{thickness}</span></div>
+    <Row className="d-flex align-items-center pl-3 pr-3 mt-0"><strong>size</strong><div>:</div> <div className="ml-2">{size} x</div> <span  className="ml-2 fraction">{thickness}</span></Row>
     </Row>
     )
     } else {

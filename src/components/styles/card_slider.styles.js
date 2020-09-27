@@ -9,7 +9,7 @@ export const CardsSlider = styled.div`
         content: '';
         display: block;
         width: 100%;
-        height: 315px;
+        height: 327px;
         position: absolute;
         top: 0;
         left: 0;
@@ -24,7 +24,7 @@ export const GradientWrapper = styled.div`
         content: '';
         display: block;
         width: 50%;
-        height: 120%;
+        height: 123%;
         background: linear-gradient(to right, rgba(255, 255, 255, 1) 15%, rgba(255, 255, 255, 0) 100%);
         position: absolute;
         top: 0;

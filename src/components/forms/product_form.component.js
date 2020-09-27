@@ -19,8 +19,6 @@ const ProductForm = () => {
     let history = useHistory();
     const jwt = JSON.parse(localStorage.getItem('jwt'))
 
-    
-
     const [values, setValues] = useState({
         categories: [],
         soldPer: 'pc',
@@ -42,6 +40,7 @@ const ProductForm = () => {
         shipping: true,
         variants: [],
         photo: '',
+        installShot: '',
         formData: new FormData()
     })
 
