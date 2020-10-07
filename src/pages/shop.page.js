@@ -10,17 +10,18 @@ const Shop = () => {
     const dispatch = useDispatch()
     const products = useSelector(state =>  state.products)
     const categories = useSelector(state =>  state.categories)
+    const theme = useSelector(state =>  state.theme)
     useEffect(() => {
         dispatch(getProducts())
         dispatch(getCategories())
     }, [dispatch])
 
     return (
-        <Container fluid>
+        <Container fluid className="pl-4 pr-4">
             <Row>
                 <Col xs={12}
-                     className="border p-4">
-                    <h2 onClick={() => console.log(categories)}>Shop</h2>
+                     className="p-4 text-center">
+                    <h1 style={{ color: theme.text_color }}>All Products</h1>
                 </Col>
                 <Col xs={12}>
                     <Row>

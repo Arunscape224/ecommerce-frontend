@@ -1,13 +1,13 @@
 import React from 'react'
 import { Container, UncontrolledCollapse } from 'reactstrap'
 
-const ProductDescription = ({ description }) => {
+const ProductDescription = ({ description, theme }) => {
     if (description) {
         return (
             <Container fluid>
                 <UncontrolledCollapse toggler="#toggler2">
                     <div className="p-4">
-                        <em>"{description}"</em>
+                        <em style={{ color: theme.text_color }}>"{description}"</em>
                     </div>                
                 </UncontrolledCollapse>
             </Container>
@@ -16,7 +16,7 @@ const ProductDescription = ({ description }) => {
 
     
         return (
-            <em className="text-center mt-2">please add a brief product description</em>
+            <em className="text-center mt-2" style={{ color: theme.text_color }}>please add a brief product description</em>
         )
 }
 

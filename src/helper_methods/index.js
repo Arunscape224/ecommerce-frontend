@@ -146,3 +146,20 @@ export const emptyCart = async () => {
         }
     })
 }
+
+export const read = async (userId, token) => {
+    return await fetch(`http://localhost:8000/api/user/${userId}`, {
+        method: "GET",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "Application/json",
+            Authorization: `Bearer ${token}`
+        },
+    })
+    .then((res) => {
+        return res.json()
+    })
+    .catch(err => console.log(err))
+}
+
+

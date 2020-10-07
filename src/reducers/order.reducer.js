@@ -1,4 +1,4 @@
-import { CREATE_ORDER, CREATE_ORDER_SUCCESS } from '../action_types/order.types'
+import { CREATE_ORDER, CREATE_ORDER_SUCCESS, LIST_ORDERS, GET_STATUS_VALUES, UPDATE_STATUS_VALUE } from '../action_types/order.types'
 
 const initState = {
     data: {},
@@ -12,6 +12,27 @@ export const orderReducer = (state = initState, action) => {
             return action.order
         case CREATE_ORDER_SUCCESS:
             return state
+        case LIST_ORDERS:
+            return {
+                ...state,
+                data: [],
+                loading: true,
+                error: ''
+            }
+        case GET_STATUS_VALUES:
+            return {
+                ...state,
+                data: [],
+                loading: true,
+                error: ''
+            }
+        case UPDATE_STATUS_VALUE:
+            return {
+                ...state,
+                data: [],
+                loading: true,
+                error: ''
+            }
             default:
                 return state
     }

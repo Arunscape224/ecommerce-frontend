@@ -5,11 +5,12 @@ import Routes from './routes';
 import { Provider } from 'react-redux'
 import { store } from './store'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 ReactDOM.render(
   <StrictMode>
     <Provider store={store}>
-      <Routes />
+      
+        <Routes />
+      
     </Provider>
   </StrictMode>,
   document.getElementById('root')

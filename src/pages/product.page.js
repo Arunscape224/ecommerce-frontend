@@ -50,25 +50,25 @@ const Product = (props) => {
         <Container fluid="xl" className="mt-3">
             <Row>
                 <Col sm="6">
-                    <Image product={product} url="product"/>
+                    <Image theme={theme} product={product} url="product"/>
                 </Col>
                 <Col sm="6">
 
                     <Row className="d-block pl-3 pr-3">
-                        <h1>{name}</h1>        
-                        <AvgRating reviews={reviews} theme={theme}/>
-                        <p>${price} / {soldPer}</p>
+                        <h1 style={{ color: theme.text_color }}>{name}</h1>        
+                        <AvgRating theme={theme} reviews={reviews} theme={theme}/>
+                        <p style={{ color: theme.text_color }}>${price} / {soldPer}</p>
                     </Row>
 
-                    <ProductInfo pcPerBox={pcPerBox} sfPerBox={sfPerBox} sfPerPiece={sfPerPiece}/>
+                    <ProductInfo theme={theme} pcPerBox={pcPerBox} sfPerBox={sfPerBox} sfPerPiece={sfPerPiece}/>
 
                     
                     
-                     <ProductSize thickness={thickness} size={size} />
-                     <ProductFinish finish={finish}/>
-                     <ProductColor color={color}/>
+                     <ProductSize theme={theme} thickness={thickness} size={size} />
+                     <ProductFinish theme={theme} finish={finish}/>
+                     <ProductColor theme={theme} color={color}/>
 
-                        <Calculator submitCalculator={submitCalculator}/>
+                        <Calculator theme={theme} submitCalculator={submitCalculator}/>
                         <AddToCartButton product={product} qty={qty} />
                         <ProductQuantitySelector qty={qty} setQty={setQty} soldPer={soldPer} /> 
 
@@ -97,11 +97,11 @@ const Product = (props) => {
                 }
             </Row>
 
-            <ProductDescription description={description} />
+            <ProductDescription theme={theme} description={description} />
             
-            <Card className="mt-4">
-                <ReviewContainer reviews={reviews} />
-            { jwt ? <ReviewForm product={product} fetchReviews={fetchReviews}/> : <div className="p-4 ml-3">please <Link to="/login">login</Link> to leave a review</div> }
+            <Card className="mt-4" style={{backgroundColor: theme.background_color}}>
+                <ReviewContainer theme={theme} reviews={reviews} />
+            { jwt ? <ReviewForm product={product} fetchReviews={fetchReviews}/> : <div className="p-4 ml-3" style={{ color: theme.text_color }}>please <Link to="/login">login</Link> to leave a review</div> }
             </Card>
         </Container>
     )

@@ -14,6 +14,8 @@ const ProductForm = () => {
     
     const theme = useSelector(state => state.theme)
     const allCategories = useSelector(state => state.categories)
+    const [selectedCategory, setSelectedCategory] = useState("")
+    const [categoriesSet, setCategoriesSet] = useState(new Set())
     const allProducts = useSelector(state => state.products)
     const dispatch = useDispatch()
     let history = useHistory();
@@ -44,9 +46,7 @@ const ProductForm = () => {
         formData: new FormData()
     })
 
-    const [chosenCategories, setChosenCategories] = useState([])
     const [productsFetched, setProductsFetched] = useState(false)
-    const [currentSelectedCategory, setCurrentSelectedCategory] = useState('')
    
 
     const { name, description, color, finish, size, shadeVariation, weight, materialType, style, pcPerBox, sfPerBox, sfPerPiece, soldPer, price, quantity, categories, index, formData } = values
@@ -56,19 +56,23 @@ const ProductForm = () => {
         formData.set(name, value)
         setValues({...values, [name]: value})
     }
-
-    const handleChangeCategory = (event) => {
-        var selectedCategory = event.target.value
-        
-        if(!chosenCategories.includes(selectedCategory)) {
-            chosenCategories.push(selectedCategory)
-            categories.push(JSON.parse(selectedCategory)._id)
-            formData.append(categories, JSON.parse(selectedCategory)._id)
-        }
-        setCurrentSelectedCategory(JSON.parse(selectedCategory))
-        console.log(currentSelectedCategory)
-        
+    const updateCategoryValuesArr = async (value) => {
+        return new Promise((resolve, reject) => {
+            setSelectedCategory(JSON.parse(value)._id)
+            resolve()
+        })
     }
+    const handleChangeCategory = (e) => {
+        const val = e.target.value
+        setCategoriesSet(prev => new Set(prev.add(JSON.parse(val)._id)))
+        updateCategoryValuesArr(val).then(() => {
+            setValues({ ...values, categories: Array.from(categoriesSet)})
+            formData.append("categories", Array.from(categoriesSet))
+        })
+        // 
+    }
+
+
 
     const onDrop = useCallback(acceptedFiles => {
         const value = acceptedFiles[0]
@@ -87,8 +91,9 @@ const ProductForm = () => {
         //     return obj._id
         // });
         // console.log(result)
-        setValues({ ...values})
+
         
+        console.log(formData)
         dispatch(createProduct(formData, jwt.user._id, jwt.token)).then(() => {
             setValues({ 
                 ...values,
@@ -113,7 +118,10 @@ const ProductForm = () => {
                 variants: [],
                 photo: '',
              })
-        }).then(() => history.push('/admin/dashboard'))
+        }).then((res) => {
+            console.log(res)
+            history.push('/admin/dashboard')
+        })
 
         console.log(values)
     }
@@ -127,10 +135,8 @@ const ProductForm = () => {
                 formData.set('index', allProducts.data.length)
             } 
         })
-
         
-        
-    }, [productsFetched, chosenCategories, dispatch, formData])
+    }, [productsFetched, dispatch, formData])
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -408,28 +414,25 @@ const ProductForm = () => {
                     </div>
                     </Container>
 
-                    <Container className="col-12" style={{ marginBottom: '2rem' }}>
-                        <Container style={{ minHeight: '50px', border: `2px solid ${theme.text_color}`, marginBottom: '1rem', borderRadius: '5px', padding: '20px' }} onClick={() => console.log(categories.size)}>
-                        {
-                            categories.length > 0 ? categories.map((category) => <div>{category}</div>) : <div>Choose Categories From The Dropdown Below</div>
-                        }
-                        </Container>
-                    </Container>
+                    {/* 
+                        Can't get sending an array with formData 
+                        to work properly,
+                        despite response being '200', state and 
+                        formData looking good. 
+
+                        - request will only work with 1 value..
+                        Will return and fix this..
+                    */}
 
                         <div className="col-12">
                         <FormGroup>
                                     <Input type="select" 
-                                        //    name="soldPer"
                                            onChange={handleChangeCategory}
-                                           value={currentSelectedCategory}
+                                           
                                            style={{
                                                 border: `2px solid ${theme.text_color}`
                                             }} 
                                            id="exampleSelect">
-
-                                        {/* <option>pc</option>
-                                        <option>box</option>
-                                        <option>sf</option> */}
                                         {
                                             allCategories ? allCategories.data.map((category) => <option value={JSON.stringify(category)}>{category.name}</option>) : <option>No Categories Found</option>
                                         }

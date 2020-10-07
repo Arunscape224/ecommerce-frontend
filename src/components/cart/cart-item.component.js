@@ -6,14 +6,15 @@ import CartQuantitySelector from '../cart/cart_quantity_selector.component'
 import { removeItem } from '../../helper_methods/index'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-
+import { useDispatch } from 'react-redux'
+import { getItemTotal } from '../../actions/cart.action'
 
 const CartItem = ({ product, updateCartItems }) => {
-
+    const dispatch = useDispatch()
     const deleteAndUpdate = (productId) => {
         removeItem(productId)
         updateCartItems()
+        dispatch(getItemTotal())
     }
 
     return (

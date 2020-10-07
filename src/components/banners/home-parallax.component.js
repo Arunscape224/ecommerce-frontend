@@ -6,8 +6,8 @@ const HomeParallax = () => {
     const image1 = "https://cdn.shopify.com/s/files/1/0265/0039/9213/files/editedii_1800x.png?v=1592317075"
 
     return (
-        <Row className="mb-4">
-        <Col>
+        <Row>
+        <Col className="p-0">
         <Parallax bgImage={image1} strength={500}>
       <div style={{ height: 500 }}>
 </div>

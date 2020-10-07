@@ -1,0 +1,1 @@
+export const GET_ITEM_TOTAL = 'GET_ITEM_TOTAL'

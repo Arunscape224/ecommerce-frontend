@@ -8,6 +8,7 @@ import { userReducer } from './user.reducer'
 import { categoryReducer } from './category.reducer'
 import { braintreeReducer } from './braintree.reducer'
 import { orderReducer } from './order.reducer'
+import { cartReducer } from './cart.reducer'
 
 export const rootReducer = combineReducers({
     theme: themeReducer,
@@ -18,6 +19,7 @@ export const rootReducer = combineReducers({
     user: userReducer,
     categories: categoryReducer,
     braintree: braintreeReducer,
-    order: orderReducer
+    order: orderReducer,
+    cart: cartReducer
 })
 

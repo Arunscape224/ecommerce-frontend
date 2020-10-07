@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toggleNav } from '../actions/nav.action'
@@ -7,83 +7,115 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,Unc
 import { isAuthenticated } from '../helper_methods/index'
 import {logoutUser} from '../actions/user.action'
 import { useHistory } from 'react-router-dom'
-import { faCartPlus, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCartPlus, faUserCircle, faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { itemTotal } from '../helper_methods/index'
 import { darkMode, lightMode } from '../theme'
-import {getTheme} from '../helper_methods/index'
+import { setTheme } from '../helper_methods/index'
+import Logo from '../components/logo.component'
 
 const Header = () => {
-
   const theme = useSelector(state => state.theme)
+  const cartTotal = useSelector(state => state.cart)
   const navState = useSelector(state => state.isOpen)
   const dispatch = useDispatch()
   const history = useHistory()
-  const mode = getTheme(theme)
+  // useEffect(() => {
+   
+  // })
   return (
-      <Navbar onClick={() => console.log(mode)} light expand="md" style={{ backgroundColor: mode.background_color }}>
-        <NavbarBrand href="/" style={{color: mode.text_color}}>ecommerce</NavbarBrand>
-        <NavbarToggler onClick={() => dispatch(toggleNav(navState.isOpen))} />
-        <Collapse isOpen={navState.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-         
-            
-            <NavItem>
-              <NavLink style={{ color: mode.text_color }} href="/shop">shop</NavLink>
-            </NavItem>
-            
-            <NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle style={{ color: mode.text_color }} nav caret>
-                user
+
+
+
+  <Navbar expand="md" light style={{ backgroundColor: theme.header_color }} >
+
+    <NavbarBrand href="/">
+        <Logo />
+    </NavbarBrand>
+
+    <NavbarToggler style={{ color: theme.text_color }}  onClick={() => dispatch(toggleNav(navState.isOpen))} />
+
+    <Collapse isOpen={navState.isOpen} navbar>
+      <Nav className="ml-auto" navbar>
+
+
+        <NavItem>
+          <NavLink style={{ color: theme.text_color, fontSize: '1.1em' }} href="/shop">shop</NavLink>
+        </NavItem>
+        <DropdownItem divider />
+
+
+        {/* <NavItem className="nav-icons">
+          <NavLink to="/cart" style={{ color: theme.text_color }}>
+            <FontAwesomeIcon icon={faUserCircle}/>
+          </NavLink>
+        </NavItem> */}
+
+        <UncontrolledDropdown nav inNavbar >
+              <DropdownToggle nav caret style={{ color: theme.text_color }} className="nav-icons">
+                <FontAwesomeIcon className="nav-icons" icon={faUserCircle}/>
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem style={{ color: mode.text_color }}>
                 
-              {!isAuthenticated() && (
-                 <NavLink style={{ color: mode.text_color }} onClick={() => history.push('/login')}>login</NavLink> 
-              )}
-              {isAuthenticated() && (
-                 <DropdownItem onClick={() => dispatch(logoutUser()).then(() => history.push('/'))}>logout</DropdownItem>
-              )}
-           
-                </DropdownItem>
-                <DropdownItem style={{ color: mode.text_color }}>
+                {!isAuthenticated() && (
+                    <DropdownItem style={{ color: theme.text_color }} onClick={() => history.push('/login')}>login</DropdownItem> 
+                 )}
+                 {isAuthenticated() && (
+                    <DropdownItem style={{ color: theme.text_color }} onClick={() => dispatch(logoutUser()).then(() => history.push('/'))}>logout</DropdownItem>
+                 )}
                 
-              <NavLink style={{ color: mode.text_color }} onClick={() => history.push('/signup')}>signup</NavLink>
-            
-                </DropdownItem>
                 
-               
+                {/* <DropdownItem>
+                  Option 2
+                </DropdownItem> */}
+
+                 {
+                 isAuthenticated() && (
+                  <>
+                    <DropdownItem divider />
+                    { isAuthenticated().user.admin ? 
+                    
+                      <DropdownItem style={{ color: theme.text_color }} onClick={() => history.push('/admin/dashboard')}>admin</DropdownItem> : 
+
+                      <DropdownItem style={{ color: theme.text_color }} onClick={() => history.push('/user/dashboard')}>profile</DropdownItem> }
+                  </>
+                 )
+                 
+                 }
+
+                 
+          
               </DropdownMenu>
             </UncontrolledDropdown>
+
+        <NavItem className="nav-icons">
+              <NavLink href="/cart" onClick={() => itemTotal()} style={{ color: theme.text_color }}>
+                <FontAwesomeIcon className="nav-icons" icon={faCartPlus}/> <sup><small className="cart-badge"><span className="font-weight-bold">{cartTotal}</span></small></sup>
+              </NavLink>
+        </NavItem>
+        <NavItem className="nav-icons">
+        {theme.status === 'light' ?
+                  <NavLink  className="d-flex align-items-center" onClick={() => dispatch(toggleTheme(darkMode)).then(() => {
+                 
+                    setTheme(darkMode)
+                  })}><FontAwesomeIcon  style={{ color: theme.text_color }} className="nav-icons" icon={faMoon}/></NavLink> :
+                  <NavLink  className="d-flex align-items-center" onClick={() => dispatch(toggleTheme(lightMode)).then(() => {
+                  
+                    setTheme(lightMode)
+                  })}><FontAwesomeIcon  style={{ color: theme.text_color }} className="nav-icons" icon={faSun}/></NavLink>
+                } 
             </NavItem>
-            <NavItem>
-              {theme.status === 'light' ?
-                <DropdownItem style={{ backgroundColor: mode.text_color, color: 'white' }} onClick={() => dispatch(toggleTheme(darkMode))}>Dark Mode</DropdownItem> :
-                <DropdownItem style={{ backgroundColor: mode.text_color, color: 'white' }} onClick={() => dispatch(toggleTheme(lightMode))}>Light Mode</DropdownItem>
-              } 
-            </NavItem>
 
-            <NavItem style={{fontSize: '1.5em'}} className="d-flex align-items-center ml-4">
-              <div>
-                <Link to="/cart" style={{ color: mode.text_color }}>
-              <FontAwesomeIcon icon={faCartPlus}/> <sup><small className="cart-badge">{itemTotal()}</small></sup>
-                </Link>
-              </div>
-            </NavItem>
+                   
+                
+              
 
 
-           {
-             isAuthenticated() ? 
-             <NavItem style={{fontSize: '1.5em', color: mode.text_color}} className="d-flex align-items-center ml-2">
+  
+      </Nav>
+    </Collapse>
 
-           <FontAwesomeIcon icon={faUserCircle}/>
-            </NavItem> : <div></div>
-           }
-          </Nav>
-        </Collapse>
-      </Navbar>
+  </Navbar>
   )
 }
 

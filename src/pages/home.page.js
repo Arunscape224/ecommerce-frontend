@@ -3,8 +3,9 @@ import { Container, Row, Col } from 'reactstrap'
 import HomeParallax from '../components/banners/home-parallax.component'
 import ContactFormContainer from '../components/contact_form_container.component'
 import CardSliderContainer from '../components/card_slider/card_slider_container.component'
+import { useSelector } from 'react-redux'
 const Home = () => {
-    
+    const theme = useSelector(state => state.theme)
     return (
       <Container fluid className="App">
       

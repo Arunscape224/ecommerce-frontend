@@ -98,15 +98,15 @@ const ReviewForm = ({ product, fetchReviews }) => {
 
     return (
         <Container>
-            <h2 className="text-center mt-3">We Love Feedback!</h2>
+            <h2 className="text-center mt-3" style={{ color: theme.text_color }}>We Love Feedback!</h2>
             <Form onSubmit={handleSubmit} className="p-4">
                     
 
                     <div className="col-12">
                     <FormGroup>
                         <Rating
-                            emptySymbol={<FontAwesomeIcon icon={faStarO} />}
-                            fullSymbol={<FontAwesomeIcon icon={faStar} />}
+                            emptySymbol={<FontAwesomeIcon style={{color: theme.text_color}} icon={faStarO} />}
+                            fullSymbol={<FontAwesomeIcon style={{color: theme.text_color}}  icon={faStar} />}
                             fractions={2}
                             initialRating={rating}
                             onChange={(rate) => {

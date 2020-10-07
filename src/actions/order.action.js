@@ -1,5 +1,5 @@
-// import axios from 'axios'
-import { CREATE_ORDER, CREATE_ORDER_SUCCESS } from '../action_types/order.types'
+import axios from 'axios'
+import { CREATE_ORDER, CREATE_ORDER_SUCCESS, LIST_ORDERS, GET_STATUS_VALUES, UPDATE_STATUS_VALUE } from '../action_types/order.types'
 
 export const createOrder = (orderData, userId, token) => {
     return async (dispatch) => {
@@ -32,6 +32,69 @@ export const createOrder = (orderData, userId, token) => {
                     type: CREATE_ORDER_SUCCESS    
                 })
             
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+}
+
+export const listOrders = (userId, token) => {
+    return async dispatch => {
+        await dispatch({
+            type: LIST_ORDERS,
+        })
+        const headers = { Authorization: `Bearer ${token}` };
+        return await axios({
+            method: 'get',
+            url: `http://localhost:8000/api/order/list/${userId}`,
+            headers
+            })
+            .then(res => {
+                return res.data
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+}
+
+export const getStatusValues = (userId, token) => {
+    return async dispatch => {
+        await dispatch({
+            type: GET_STATUS_VALUES,
+        })
+        const headers = { Authorization: `Bearer ${token}` };
+        return await axios({
+            method: 'get',
+            url: `http://localhost:8000/api/order/status-values/${userId}`,
+            headers
+            })
+            .then(res => {
+                return res.data
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+}
+
+export const updateStatusValue = (userId, token, orderId, status) => {
+    return async (dispatch) => {
+        await dispatch({
+            type: UPDATE_STATUS_VALUE,
+        })
+        return await fetch(`http://localhost:8000/api/order/${orderId}/status/${userId}`, {
+            method: "PUT",
+            headers: {
+                Accept: 'application/json',
+                "Content-Type": "Application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({ orderId, status })
+        })
+        .then(res => {
+                return res.json()
         })
         .catch(err => {
             console.log(err);

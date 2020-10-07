@@ -10,10 +10,31 @@ body {
     margin-bottom: 0;
   }
 
+  .logo-header {
+    font-family: "Texgyre Pagella" !important;
+  }
+
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .jumbotron {
     background-color: white;
   }
+  .nav-icons {
+    font-size: 1.3em;
+  }
 
+  .cursor-pointer{
+    cursor: pointer;
+  }
   
   
 

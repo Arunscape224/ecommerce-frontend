@@ -1,4 +1,4 @@
-import { CREATE_USER, LOGIN_USER, LOGIN_USER_SUCCESS, CREATE_USER_SUCCESS, LOGOUT_USER } from '../action_types/user.types'
+import { CREATE_USER, LOGIN_USER, LOGIN_USER_SUCCESS, CREATE_USER_SUCCESS, LOGOUT_USER, UPDATE_USER, UPDATE_LS_USER, GET_PURCHASE_HISTORY, GET_PURCHASE_HISTORY_SUCCESS } from '../action_types/user.types'
 import axios from 'axios'
 import { authenticate, signout } from '../helper_methods/index'
 
@@ -64,5 +64,65 @@ export const logoutUser = () => {
 
         return await signout()
         
+    }
+}
+
+
+export const getPurchaseHistory = (userId, token) => {
+    return async dispatch => {
+        dispatch({
+            type: GET_PURCHASE_HISTORY,
+        })
+        return fetch(`http://localhost:8000/api/orders/by/user/${userId}`, {
+            method: "GET",
+            headers: {
+                Accept: 'application/json',
+                "Content-Type": "Application/json",
+                Authorization: `Bearer ${token}`
+            } 
+        })
+        .then(response => {
+            dispatch({
+                type: GET_PURCHASE_HISTORY_SUCCESS,
+            })
+            return response.json()
+        })
+        .catch(err => console.log(err))
+}
+}
+
+// Still Being Worked On
+export const updateUser = (userId, token, updatedUser, next) => {
+    return async (dispatch) => {
+        await dispatch({
+            type: UPDATE_USER,
+        })
+        return await fetch(`http://localhost:8000/api/user/${userId}`, {
+            method: "PUT",
+            headers: {
+                Accept: 'application/json',
+                "Content-Type": "Application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(updatedUser)
+        })
+        .then(res => {
+            dispatch({
+                type: UPDATE_LS_USER,
+                user: res.json()
+            })
+            if(typeof window !== 'undefined') {
+                if(localStorage.getItem('jwt')) {
+                    let auth = JSON.parse(localStorage.getItem('jwt'))
+                    auth.user = updateUser
+                    localStorage.setItem('jwt', JSON.stringify(auth))
+                    next()
+                }
+            } 
+                return res.json()
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 }

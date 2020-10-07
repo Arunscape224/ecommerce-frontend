@@ -34,7 +34,7 @@ const AvgRating = ({ reviews, theme }) => {
                             initialRating={avg}
                             readonly/> 
 
-            <em className="ml-2">({avg})</em>
+            <em className="ml-2" style={{ color: theme.text_color }}>({avg})</em>
         </>
     )
 }

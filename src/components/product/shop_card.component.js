@@ -7,12 +7,12 @@ const ShopCard = ({ product }) => {
     const [hovering, setHovering] = useState(false)
     return (
     <div className={`grid-item grid-item--${product.index}`}  onMouseOver={() => setHovering(true)} onMouseOut={() => setHovering(false)}>
-        <Image product={product} url="product"/>
+        <Image theme={theme} product={product} url="product"/>
             <div>
-                <div>{product.name}</div>
+                <div className="mt-3" style={{color: theme.text_color}}>{product.name}</div>
                {
                    hovering ? 
-                   <p className="text-muted ">${product.price} / {product.soldPer}</p> :
+                   <p className="text-muted">${product.price} / {product.soldPer}</p> :
                    <p style={{color: theme.background_color, height: '30px'}}></p>
                }
             </div>
