@@ -14,8 +14,10 @@ import UpdateUser from './pages/user/updateUser.page'
 import AdminDashboard from './pages/admin/dashboard.page'
 import CreateProduct from './pages/admin/create_product.page'
 import CreateCategory from './pages/admin/create_category.page'
+import ManageProducts from './pages/admin/manage_products.page'
 import Cart from './pages/cart.page'
 import { BodyWrapper } from './components/styles/body_wrapper.styles'
+import UpdateProduct from './pages/admin/update_product.page'
 
 const Routes = () => {
     const theme = useSelector(state => state.theme)
@@ -35,6 +37,8 @@ const Routes = () => {
             <AdminRoute path="/admin/dashboard" exact component = { AdminDashboard } />
             <AdminRoute path="/admin/create/product" exact component = { CreateProduct } />
             <AdminRoute path="/admin/create/category" exact component = { CreateCategory } />
+            <AdminRoute path="/admin/manage/products" exact component = { ManageProducts } />
+            <AdminRoute path="/admin/update/product/:productId" exact component = { UpdateProduct } />
         </Switch>
     </BrowserRouter>
     </BodyWrapper>

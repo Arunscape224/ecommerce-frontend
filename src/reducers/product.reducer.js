@@ -1,4 +1,4 @@
-import { GET_PRODUCTS, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_ERR, CREATE_PRODUCT, CREATE_PRODUCT_SUCCESS, GET_SINGLE_PRODUCT, GET_SINGLE_PRODUCT_SUCCESS, GET_SINGLE_PRODUCT_ERR } from '../action_types/product.types'
+import { GET_PRODUCTS, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_ERR, CREATE_PRODUCT, CREATE_PRODUCT_SUCCESS, GET_SINGLE_PRODUCT, GET_SINGLE_PRODUCT_SUCCESS, GET_SINGLE_PRODUCT_ERR, DELETE_SINGLE_PRODUCT, UPDATE_SINGLE_PRODUCT } from '../action_types/product.types'
 
 const initState = {
     data: [],
@@ -10,6 +10,8 @@ export const productReducer = (state = initState, action) => {
     switch (action.type) {
         case CREATE_PRODUCT:
             return action.product
+        case UPDATE_SINGLE_PRODUCT:
+            return state
         case CREATE_PRODUCT_SUCCESS:
             return state
         case GET_PRODUCTS:
@@ -53,6 +55,13 @@ export const productReducer = (state = initState, action) => {
             data: {},
             loading: false,
             error: 'There was a sad error'
+        }
+        case DELETE_SINGLE_PRODUCT:
+            return {
+                ...state,
+                data: action.payload,
+                loading: true,
+                error: ''
         }
             default:
                 return state

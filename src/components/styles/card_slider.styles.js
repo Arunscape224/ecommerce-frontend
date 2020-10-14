@@ -53,7 +53,7 @@ export const CardSliderWrapper = styled.div`
     .single-card {
       flex: 1;
       min-width: 226px;
-      opacity: 0.5;
+      opacity: 0.3;
       transform: scale(0.7);
       transition: opacity 300ms linear, transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
       .details {

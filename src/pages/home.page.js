@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Container } from 'reactstrap'
+import LoopingBanner from '../components/banners/looping-bgimage.component'
 import HomeParallax from '../components/banners/home-parallax.component'
 import ContactFormContainer from '../components/contact_form_container.component'
 import CardSliderContainer from '../components/card_slider/card_slider_container.component'
@@ -9,14 +10,14 @@ const Home = () => {
     return (
       <Container fluid className="App">
       
-    
+      <LoopingBanner />
           <HomeParallax />
-       
+
 
 
       <CardSliderContainer/>
       
-
+      
             <ContactFormContainer />
          
          

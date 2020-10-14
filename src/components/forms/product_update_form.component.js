@@ -2,35 +2,36 @@ import React, { useCallback, useState, useEffect } from 'react'
 import { Container, Row, Col, Form, Button, FormGroup, Input, InputGroup, InputGroupText, InputGroupAddon } from 'reactstrap'
 import {useDropzone} from 'react-dropzone'
 import { useSelector, useDispatch } from 'react-redux'
-import { createProduct, getProducts } from '../../actions/product.action'
+import { updateProduct } from '../../actions/product.action'
 import { getCategories } from '../../actions/category.action'
 import { useHistory } from "react-router-dom";
 import { faDollarSign, faCamera } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { getSingleProduct } from '../../actions/product.action'
 
 
 
-const ProductForm = () => {
+const UpdateProductForm = ({props}) => {
     
     const theme = useSelector(state => state.theme)
     const allCategories = useSelector(state => state.categories)
     const [selectedCategory, setSelectedCategory] = useState("")
     const [categoriesSet, setCategoriesSet] = useState(new Set())
-    const allProducts = useSelector(state => state.products)
     const dispatch = useDispatch()
     let history = useHistory();
     const jwt = JSON.parse(localStorage.getItem('jwt'))
+    const id = props.match.params.productId
 
     const [values, setValues] = useState({
         categories: [],
-        soldPer: 'pc',
+        soldPer: '',
         name: '',
         description: '',
         color: '',
         finish: '',
         size: '',
         pcPerBox: 0,
-        shadeVariation: 'V2',
+        shadeVariation: '',
         sfPerBox: 0,
         sfPerPiece: 0,
         materialType: '',
@@ -46,7 +47,7 @@ const ProductForm = () => {
         formData: new FormData()
     })
 
-    const [productsFetched, setProductsFetched] = useState(false)
+    
    
 
     const { name, description, color, finish, size, shadeVariation, weight, materialType, style, pcPerBox, sfPerBox, sfPerPiece, soldPer, price, quantity, categories, index, formData } = values
@@ -84,43 +85,11 @@ const ProductForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // let categoriesArray =  Array.from(chosenCategories)
-        // let result = categoriesArray.map(category => {
-        //     let obj = JSON.parse(category)
-        //     console.log(obj.name)
-        //     return obj._id
-        // });
-        // console.log(result)
 
         
         console.log(formData)
-        dispatch(createProduct(formData, jwt.user._id, jwt.token)).then(() => {
-            setValues({ 
-                ...values,
-                categories: [],
-                soldPer: '',
-                index: 0,
-                name: '',
-                description: '',
-                shadeVariation: 'V2',
-                color: '',
-                finish: '',
-                size: '',
-                pcPerBox: 0,
-                sfPerBox: 0,
-                sfPerPiece: 0,
-                weight: 0,
-                materialType: '',
-                style: '',
-                price: '',
-                quantity: 100,
-                shipping: true,
-                variants: [],
-                photo: '',
-             })
-        }).then((res) => {
-            console.log(res)
-            history.push('/admin/dashboard')
+        dispatch(updateProduct(id, jwt.user._id, jwt.token, formData)).then(() => {
+            history.push(`/product/${id}`)
         })
 
         console.log(values)
@@ -129,14 +98,54 @@ const ProductForm = () => {
 
     useEffect(() => {
         dispatch(getCategories())
-        dispatch(getProducts()).then(() => setProductsFetched(true)).then(() => {
-            if(allProducts.data !== undefined) {
-                setValues({...values, index: allProducts.data.length})
-                formData.set('index', allProducts.data.length)
-            } 
+        dispatch(getSingleProduct(id)).then((product) => {
+            console.log(product)
+            setValues({
+                ...values,
+                categories: product.categories,
+                soldPer: product.soldPer,
+                index: product.index,
+                name: product.name,
+                description: product.description,
+                shadeVariation: product.shadeVariation,
+                color: product.color,
+                finish: product.finish,
+                size: product.size,
+                pcPerBox: product.pcPerBox,
+                sfPerBox: product.sfPerBox,
+                sfPerPiece: product.sfPerPiece,
+                weight: product.weight,
+                materialType: product.materialType,
+                style: product.style,
+                price: product.price,
+                quantity: product.quantity,
+                shipping: true,
+                variants: product.variants
+
+            })
+
+            formData.set('categories', product.categories)
+            formData.set('soldPer', product.soldPer)
+            formData.set('index', product.index)
+            formData.set('name', product.name)
+            formData.set('description', product.description)
+            formData.set('shadeVariation', product.shadeVariation)
+            formData.set('color', product.color)
+            formData.set('finish', product.finish)
+            formData.set('size', product.size)
+            formData.set('pcPerBox', product.pcPerBox)
+            formData.set('sfPerBox', product.sfPerBox)
+            formData.set('sfPerPiece', product.sfPerPiece)
+            formData.set('materialType', product.materialType)
+            formData.set('style', product.style)
+            formData.set('price', product.price)
+            formData.set('quantity', product.quantity)
+            formData.set('shipping', true)
+            formData.set('variants', product.variants)
+                
         })
         
-    }, [productsFetched, dispatch, formData])
+    }, [dispatch, formData])
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -465,4 +474,4 @@ const ProductForm = () => {
     )
 }
 
-export default ProductForm
+export default UpdateProductForm

@@ -20,6 +20,10 @@ body {
     justify-content: center;
   }
 
+  .trash-icon:hover {
+    color: pink!important
+  }
+
   .container-fluid {
     padding-left: 0;
     padding-right: 0;
@@ -90,6 +94,8 @@ $i: 0;
 }
 }
 
+
+
 .clear-button {
   background-color: Transparent;
   background-repeat:no-repeat;
@@ -126,4 +132,27 @@ $i: 0;
 
 }
 
+
+// CSS Loop
+
+.wrapper {
+  overflow: hidden;
+}
+
+.sliding-background {
+  background: url("https://cdn.shopify.com/s/files/1/0265/0039/9213/files/test.png?v=1602589417") repeat-x;
+  height: 160px;
+  width: 5076px;
+  opacity: 0.1;
+  animation: slide 60s linear infinite;
+}
+
+@keyframes slide{
+  0%{
+    transform: translate3d(-1692px, 0, 0);
+  }
+  100%{
+    transform: translate3d(0, 0, 0);
+  }
+}
 

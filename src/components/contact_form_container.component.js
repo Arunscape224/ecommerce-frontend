@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 const ContactFormContainer = () => {
     const theme = useSelector(state => state.theme)
  return (
-                  <Row className="justify-content-center align-items-center p-4">
+                  <Row className="justify-content-center align-items-center">
                        
           <Col sm="8" className="justify-content-center align-items-center">
           <Jumbotron className="text-center" style={{backgroundColor: theme.background_color}}>
