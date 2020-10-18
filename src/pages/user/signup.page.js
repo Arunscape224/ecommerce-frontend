@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Card } from 'reactstrap'
 import { useSelector } from 'react-redux'
 import  SignupForm from '../../components/forms/signup_form.component'
 
@@ -10,22 +10,24 @@ const Signup = () => {
    
     return (
         <Container fluid>
-            <Row style={{borderLeft: `2px solid ${theme.text_color}` , borderRight: `2px solid ${theme.text_color}`, borderTop: `2px solid ${theme.text_color}`}}>
+            <Row className="text-center p-5">
                 <Col>
                     <h1 >Apply For Our Trade Program!</h1>
                 </Col>
             </Row>
-            <Row style={{border: `2px solid ${theme.text_color}`}}>
+            <Row className="d-flex justify-content-center align-items-center">
 
-                <Col xs="7">
-                </Col>
-
-                <Col xs ="5" 
-                     style={{ borderLeft: `2px solid ${theme.text_color}` }}>
+               
+                <Col xs ="8" >
+                <Card className="p-5">
                          <h2 className="mb-4 mt-4 text-center">Signup</h2>
                          <p className="text-center mb-4 mb-4">Welcome to our signup form! Create an account with us to keep track of your orders, favorites and shipping!</p>
                     <SignupForm />
+                    </Card>
                 </Col>
+                
+
+                
             </Row>
 
         </Container>

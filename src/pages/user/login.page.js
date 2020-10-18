@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Card } from 'reactstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import  LoginForm from '../../components/forms/login_form.component'
 import {logoutUser} from '../../actions/user.action'
@@ -13,22 +13,23 @@ const Login = () => {
    
     return (
         <Container fluid>
-            <Row style={{borderLeft: `2px solid ${theme.text_color}` , borderRight: `2px solid ${theme.text_color}`, borderTop: `2px solid ${theme.text_color}`}}>
+            <Row className="text-center p-4">
                 <Col>
-                    <h1>Login To Your Profile</h1>
+                    <h1 style={{color: theme.text_color}}>Login To Your Profile</h1>
                 </Col>
             </Row>
-            <Row style={{border: `2px solid ${theme.text_color}`}}>
+            <Row className="d-flex justify-content-center p-5">
 
-                <Col xs="7">
+  
+            <Card style={{backgroundColor: theme.background_color}}>
+                <Col xs ="12">
+                         <h2 style={{color: theme.text_color}} onClick={() => dispatch(logoutUser()).then(() => history.push('/'))} className="mb-4 mt-4 text-center">We Missed You!</h2>
+                         <p className="text-center mb-4 mb-4" style={{color: theme.text_color}}>Enter your email and password to get logged in!</p>
+                    
+                        <LoginForm />
+                    
                 </Col>
-
-                <Col xs ="5" 
-                     style={{ borderLeft: `2px solid ${theme.text_color}` }}>
-                         <h2 onClick={() => dispatch(logoutUser()).then(() => history.push('/'))} className="mb-4 mt-4 text-center">We Missed You!</h2>
-                         <p className="text-center mb-4 mb-4">Enter your email and password to get logged in!</p>
-                    <LoginForm />
-                </Col>
+                </Card>
             </Row>
 
         </Container>

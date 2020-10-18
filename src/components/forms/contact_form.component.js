@@ -88,7 +88,7 @@ const ContactForm = () => {
                      <Row>
                          <Col>
                          <FormGroup>
-                            <Button style={{ backgroundColor: theme.text_color }}>Submit</Button>
+                            <Button style={{ backgroundColor: theme.button_color }}>Submit</Button>
                          </FormGroup>
                          </Col>
                      </Row>

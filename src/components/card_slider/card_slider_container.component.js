@@ -12,7 +12,6 @@ const CardSliderContainer = () => {
     const slider = useSelector(state => state.slider)
     const products = useSelector(state => state.products)
     const theme = useSelector(state => state.theme)
-    const firstSix = products.data.slice(0, 6)
     useEffect(() => {
         dispatch(getProducts())
         
@@ -20,19 +19,19 @@ const CardSliderContainer = () => {
 
 
     return (
-        <Row className="mt-4 mb-4">
-
-          <Col className="d-flex justify-content-between align-items-center" style={{ height: '325px',  zIndex: '10000000000000'}}>
+        <div className="mt-5" style={{marginBottom: '150px'}}>
+          
+          <Col className="d-flex justify-content-between align-items-center  position-absolute" style={{ height: '325px'}}>
             <div className="d-flex justify-content-between w-100 align-items-center" style={{ height: '325px', zIndex: '1000000000000000000000000 !important' }}>
-              <button className="p-4 clear-button" disabled={slider.property.index === 0} onClick={() => dispatch(slideLeft(slider))}><FontAwesomeIcon size="lg" icon={faChevronLeft}/></button>
-              <button className="p-4 clear-button" disabled={slider.property.index === slider.properties.length - 1} onClick={() => dispatch(slideRight(slider))}><FontAwesomeIcon size="lg" icon={faChevronRight}/></button>
+              <button id="slider-buttons" className="p-4 clear-button" style={{  zIndex: '1000000000000000000000000 !important' }} disabled={slider.property.index === 0} onClick={() => dispatch(slideLeft(slider))}><FontAwesomeIcon style={{  zIndex: '100000000000000000000000000 !important' }}  size="lg" icon={faChevronLeft}/></button>
+              <button id="slider-buttons" className="p-4 clear-button" style={{  zIndex: '1000000000000000000000000 !important' }} disabled={slider.property.index === slider.properties.length - 1} onClick={() => dispatch(slideRight(slider))}><FontAwesomeIcon style={{  zIndex: '100000000000000000000000000 !important' }}  size="lg" icon={faChevronRight}/></button>
             </div>
           </Col>
           
-          <Col className="position-absolute">
-            <CardSlider products={firstSix} />
+          <Col>
+            <CardSlider products={products.data} />
           </Col>
-    </Row>
+    </div>
     )
 }
 

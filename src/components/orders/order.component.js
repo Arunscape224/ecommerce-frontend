@@ -14,10 +14,10 @@ const Order = ({ order, statusValues, loadOrders }) => {
   
     return (
     <Row onClick={() => console.log(order)}>
-        <Col xs={12}>
+        <Col xs={12} className="p-2">
 
             {/* Order Status */}
-            <Row className="m-3" style={{border: `2px solid ${theme.text_color}`}}>
+            <Row className="m-3 p-3 shadow-lg" >
                 <Col xs={12}>
                     {/* Order Status */}
                     <Row>
@@ -55,7 +55,7 @@ const Order = ({ order, statusValues, loadOrders }) => {
                     </Row>   
 
                     <Row>
-                        <Col xs={12}>
+                        <Col xs={12} className="pt-4">
                             <ShowStatus loadOrders={loadOrders} order={order} statusValues={statusValues} />
                         </Col>
                     </Row>   

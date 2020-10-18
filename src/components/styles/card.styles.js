@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const SingleCard = styled.div`
     border: 3px #f3f3f3 solid;
+ 
     z-index: 9999999999 !important;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
     transition: all 0.3s linear;

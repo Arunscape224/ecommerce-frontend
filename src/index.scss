@@ -94,7 +94,9 @@ $i: 0;
 }
 }
 
-
+#slider-buttons {
+  z-index: 9999999999999999999999999999999 !important
+}
 
 .clear-button {
   background-color: Transparent;
@@ -146,12 +148,58 @@ $i: 0;
   opacity: 0.1;
   animation: slide 60s linear infinite;
 }
+.sliding-background-reverse {
+  background: url("https://cdn.shopify.com/s/files/1/0265/0039/9213/files/test.png?v=1602589417") repeat-x;
+  height: 160px;
+  width: 5076px;
+  opacity: 0.1;
+  animation: slidereverse 60s linear infinite;
+}
+
+.skyline {
+  opacity: 0.05;
+}
+
+#right-banner {
+  background-image: url("https://cdn.shopify.com/s/files/1/0265/0039/9213/files/banner4.jpg?v=1573570725");
+  background-position: center;
+  background-size: cover;
+  min-height: 320px;
+  max-height: 320px;
+}
+
+
+#left-banner-reverse {
+  // background-image: url("https://cdn.shopify.com/s/files/1/0265/0039/9213/files/banner4.jpg?v=1573570725");
+  background-image: url("https://cdn.shopify.com/s/files/1/0265/0039/9213/files/our-story4.jpg?v=1570534108");
+  background-position: center;
+  background-size: cover;
+  min-height: 320px;
+  max-height: 320px;
+}
+
+#contact-form-container {
+  // background-image: url("https://cdn.shopify.com/s/files/1/0265/0039/9213/files/banner4.jpg?v=1573570725");
+  
+  // background-image: linear-gradient(to bottom, rgba(104, 106, 106, 1), rgba(245, 246, 252, 0.52)), url("https://cdn.shopify.com/s/files/1/0265/0039/9213/files/calacatta-marble.jpg?v=1603025257");
+  background-position: center;
+  background-size: cover;
+}
 
 @keyframes slide{
   0%{
     transform: translate3d(-1692px, 0, 0);
   }
   100%{
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slidereverse{
+  100%{
+    transform: translate3d(-1692px, 0, 0);
+  }
+  0%{
     transform: translate3d(0, 0, 0);
   }
 }

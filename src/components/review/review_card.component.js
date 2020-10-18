@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const ReviewCard = ({ review, theme }) => {
     const { createdAt, rating, subject, textBody, userName, userTrade } = review
     return (
-        <Card className="mt-4" style={{backgroundColor: theme.background_color, color: theme.text_color, border: `2px solid ${theme.text_color}`, boxShadow: `5px 10px 18px ${theme.box_shadow}`}}>
+        <Card className="m-5" style={{backgroundColor: theme.background_color, color: theme.text_color, border: `2px solid ${theme.text_color}`, boxShadow: `5px 10px 18px ${theme.box_shadow}`}}>
             
             <CardHeader>
                 <div>

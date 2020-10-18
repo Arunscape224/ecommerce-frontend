@@ -7,6 +7,7 @@ import Product from './pages/product.page'
 import Home from './pages/home.page'
 import Shop from './pages/shop.page'
 import Header from './components/header.component'
+import Footer from './components/footer.component'
 import PrivateRoute from './components/auth/PrivateRoute.component'
 import AdminRoute from './components/auth/AdminRoute.component'
 import Dashboard from './pages/user/dashboard.page'
@@ -40,6 +41,7 @@ const Routes = () => {
             <AdminRoute path="/admin/manage/products" exact component = { ManageProducts } />
             <AdminRoute path="/admin/update/product/:productId" exact component = { UpdateProduct } />
         </Switch>
+        <Footer />
     </BrowserRouter>
     </BodyWrapper>
     )

@@ -43,6 +43,12 @@ const Header = () => {
           <NavLink style={{ color: theme.text_color, fontSize: '1.1em' }} href="/shop">shop</NavLink>
         </NavItem>
         <DropdownItem divider />
+        <NavItem>
+          <NavLink style={{ color: theme.text_color, fontSize: '1.1em' }} href="/contact">contact</NavLink>
+        </NavItem>
+        <DropdownItem divider />
+
+        
 
 
         {/* <NavItem className="nav-icons">
@@ -93,7 +99,7 @@ const Header = () => {
                 <FontAwesomeIcon className="nav-icons" icon={faCartPlus}/> <sup><small className="cart-badge"><span className="font-weight-bold">{cartTotal}</span></small></sup>
               </NavLink>
         </NavItem>
-        <NavItem className="nav-icons">
+        {/* <NavItem className="nav-icons">
         {theme.status === 'light' ?
                   <NavLink  className="d-flex align-items-center" onClick={() => dispatch(toggleTheme(darkMode)).then(() => {
                  
@@ -104,7 +110,7 @@ const Header = () => {
                     setTheme(lightMode)
                   })}><FontAwesomeIcon  style={{ color: theme.text_color }} className="nav-icons" icon={faSun}/></NavLink>
                 } 
-            </NavItem>
+            </NavItem> */}
 
                    
                 

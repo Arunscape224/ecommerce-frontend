@@ -55,6 +55,7 @@ const AdminDashboard = () => {
                         <Row>
                             <Col xs={12}><h2 className="cursor-pointer" onClick={() => history.push('/admin/create/product')}>Create A Product</h2></Col>
                             <Col xs={12}><h2 className="cursor-pointer" onClick={() => history.push('/admin/create/category')}>Create A Category</h2></Col>
+                            <Col xs={12}><h2 className="cursor-pointer" onClick={() => history.push('/admin/manage/products')}>Manage Products</h2></Col>
                         </Row>
                         </Container>
                     </CardBody>

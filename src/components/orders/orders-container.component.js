@@ -16,7 +16,7 @@ const OrdersContainer = ({ orders, loadOrders }) => {
 
     return (
         <div>
-                <div style={{ border: `2px solid ${theme.text_color}` }}>
+                <div>
                     { orders.map((order) => <Order loadOrders={loadOrders} order={order} statusValues={statusValues}/>) }
                 </div>
         </div>

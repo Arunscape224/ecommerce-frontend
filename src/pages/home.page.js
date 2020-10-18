@@ -1,7 +1,9 @@
 import React from 'react'
-import { Container } from 'reactstrap'
+import { Container, Row } from 'reactstrap'
 import LoopingBanner from '../components/banners/looping-bgimage.component'
+import LoopingBannerReverse from '../components/banners/looping-banner-reverse.component'
 import HomeParallax from '../components/banners/home-parallax.component'
+import ThreeValues from '../components/banners/three-values.component'
 import ContactFormContainer from '../components/contact_form_container.component'
 import CardSliderContainer from '../components/card_slider/card_slider_container.component'
 import { useSelector } from 'react-redux'
@@ -9,14 +11,18 @@ const Home = () => {
     const theme = useSelector(state => state.theme)
     return (
       <Container fluid className="App">
+      <HomeParallax />
+      <ThreeValues theme={theme} />
+   
+      <LoopingBannerReverse theme={theme} />
       
-      <LoopingBanner />
-          <HomeParallax />
-
-
-
+          
+      <div  className="text-center mt-5">
+<h1 style={{ color: theme.text_color }}>Our Favorites</h1>
+</div>
       <CardSliderContainer/>
-      
+      <LoopingBanner theme={theme} />
+
       
             <ContactFormContainer />
          

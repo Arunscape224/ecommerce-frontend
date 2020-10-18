@@ -7,7 +7,7 @@ const ReviewContainer = ({ reviews, theme }) => {
         return (
             <Container style={{backgroundColor: theme.background_color}}>
                 
-                <UncontrolledCollapse toggler="#toggler" className="p2">
+                <UncontrolledCollapse toggler="#toggler">
                 {
                     reviews.map(review => <ReviewCard theme={theme} review={review}/>)
                 }

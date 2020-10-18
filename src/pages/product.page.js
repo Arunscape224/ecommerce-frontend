@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import {Container, Card, Row, Col, Button } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleProduct } from '../actions/product.action'
-import Image from '../components/image.component'
 import ReviewForm from '../components/forms/review_form.component'
 import ReviewContainer from '../components/review/review_container.component'
 import { getReviews } from '../actions/review.action'
@@ -17,6 +16,7 @@ import AddToCartButton from '../components/add_to_cart_button.component'
 import { Link } from 'react-router-dom'
 import ProductQuantitySelector from '../components/product/product_quantity_selector.component'
 import { CalculateQty } from '../helper_methods/index'
+import MagImage from '../components/mag-image.component'
 
 const Product = (props) => {
     const [product, setProduct] = useState({})
@@ -50,7 +50,7 @@ const Product = (props) => {
         <Container fluid="xl" className="mt-3">
             <Row>
                 <Col sm="6">
-                    <Image theme={theme} product={product} url="product"/>
+                    <MagImage theme={theme} product={product} url="product"/>
                 </Col>
                 <Col sm="6">
 

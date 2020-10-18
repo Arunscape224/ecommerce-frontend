@@ -38,11 +38,7 @@ const CheckoutContainer = ({ products }) => {
     
     const getToken = (userId, token) => {
         dispatch(getBraintreeToken(userId, token)).then((data) => {
-            if (data.error) {
-                setData({...data, error: data.error})
-            } else {
-                setData({clientToken: data.clientToken})
-            }
+            setData({clientToken: data.clientToken})
         })
        
     }
@@ -107,7 +103,9 @@ const CheckoutContainer = ({ products }) => {
     
 
     useEffect(() => {
+       if(isAuthenticated()) {
         getToken(userId, token)
+       }
     }, [])
 
     return (
