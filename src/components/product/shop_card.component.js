@@ -12,8 +12,8 @@ const ShopCard = ({ product }) => {
                 <div className="mt-3" style={{color: theme.text_color}}>{product.name}</div>
                {
                    hovering ? 
-                   <p className="text-muted">${product.price} / {product.soldPer}</p> :
-                   <p style={{color: theme.background_color, height: '30px'}}></p>
+                   <p style={{color: theme.text_color}} >${product.price} / <span style={{color: theme.button_color}}>{product.soldPer}</span></p> :
+                   <p style={{height: '30px'}}></p>
                }
             </div>
   

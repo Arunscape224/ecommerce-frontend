@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { toggleNav } from '../actions/nav.action'
-import { toggleTheme } from '../actions/theme.action'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { isAuthenticated } from '../helper_methods/index'
 import {logoutUser} from '../actions/user.action'
@@ -10,8 +8,6 @@ import { useHistory } from 'react-router-dom'
 import { faCartPlus, faUserCircle, faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { itemTotal } from '../helper_methods/index'
-import { darkMode, lightMode } from '../theme'
-import { setTheme } from '../helper_methods/index'
 import Logo from '../components/logo.component'
 
 const Header = () => {
@@ -20,9 +16,8 @@ const Header = () => {
   const navState = useSelector(state => state.isOpen)
   const dispatch = useDispatch()
   const history = useHistory()
-  // useEffect(() => {
-   
-  // })
+
+  
   return (
 
 
@@ -44,7 +39,7 @@ const Header = () => {
         </NavItem>
         <DropdownItem divider />
         <NavItem>
-          <NavLink style={{ color: theme.text_color, fontSize: '1.1em' }} href="/contact">contact</NavLink>
+          <NavLink style={{ color: theme.text_color, fontSize: '1.1em' }} href="/#contact-form-container">contact</NavLink>
         </NavItem>
         <DropdownItem divider />
 

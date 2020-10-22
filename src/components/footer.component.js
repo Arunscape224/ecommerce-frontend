@@ -13,7 +13,7 @@ const Footer = () => {
     const dispatch = useDispatch()
 
     return (
-        <footer className="page-footer">
+        <footer className=" w-100 position-absolute" style={{ left: '0 !important', right: '0 !important', bottom: '0 !important', backgroundColor: theme.background_color }}>
 
 
         {theme.status === 'light' ?
@@ -30,7 +30,7 @@ const Footer = () => {
 
 
         <div className="skyline d-flex justify-content-end align-items-between">
-        {theme.status === 'light' ?
+        {/* {theme.status === 'light' ?
                   <div  className="d-flex align-items-center mt-4 ml-4" onClick={() => dispatch(toggleTheme(darkMode)).then(() => {
                  
                     setTheme(darkMode)
@@ -39,8 +39,8 @@ const Footer = () => {
                   
                     setTheme(lightMode)
                   })}><FontAwesomeIcon  style={{ color: theme.text_color }} className="nav-icons" icon={faMoon}/></div>
-                } 
-              <svg className="position-absolute" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                }  */}
+              <svg className="" version="1.0" xmlns="http://www.w3.org/2000/svg"
                width="100%" viewBox="0 0 2055.000000 470.000000"
                preserveAspectRatio="xMidYMid meet">
               <g transform="translate(0.000000,470.000000) scale(0.100000,-0.100000)"
@@ -107,16 +107,16 @@ const Footer = () => {
               </svg>
             </div>
 
-           <Container>
-           <Row  className=" d-flex justify-content-end align-items-between" >
+           <Container fluid>
+           <Row  className=" d-flex justify-content-between align-items-between" >
   
-  <Col sm="4" className=" h-100 d-flex justify-content-center align-items-center flex-column"></Col>
-  <Col sm="4" className=" h-100 d-flex justify-content-end align-items-end p-5"></Col>
-  <Col sm="4" className=" d-flex justify-content-center align-items-end">
-    <FontAwesomeIcon className="m-3" style={{fontSize: '1.8em', color: theme.button_color}} icon={faInstagram} />
-    <FontAwesomeIcon className="m-3" style={{fontSize: '1.8em', color: theme.button_color}} icon={faHouzz} />
-    <FontAwesomeIcon className="m-3" style={{fontSize: '1.8em', color: theme.button_color}} icon={faPinterest} />
-    <FontAwesomeIcon className="m-3" style={{fontSize: '1.8em', color: theme.button_color}} icon={faFacebook} />
+  <Col sm="4" className=" h-100 d-flex justify-content-center align-items-center p-0 m-0 flex-column"></Col>
+  <Col sm="4" className=" h-100 d-flex justify-content-end align-items-end p-0 m-0"></Col>
+  <Col sm="4" className=" d-flex justify-content-center align-items-center p-0 m-0">
+    <FontAwesomeIcon className="ml-5"  style={{fontSize: '1.8em', color: theme.text_color}} icon={faInstagram} />
+    <FontAwesomeIcon className="ml-5"  style={{fontSize: '1.8em', color: theme.text_color}} icon={faHouzz} />
+    <FontAwesomeIcon className="ml-5"  style={{fontSize: '1.8em', color: theme.text_color}} icon={faPinterest} />
+    <FontAwesomeIcon className="ml-5"  style={{fontSize: '1.8em', color: theme.text_color}} icon={faFacebook} />
   </Col>
 
 </Row>

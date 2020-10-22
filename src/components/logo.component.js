@@ -8,14 +8,14 @@ const Logo = () => {
     <Media className="d-flex align-items-center logo-header text-uppercase">
 
       <Media left href="/" className="m-1">
-        <Media style={{ width: '60px' }} object src="/sg-logo.png" alt="Generic placeholder image" />
+        <Media className="logo" style={{ width: '55px' }} object src="/sg-logo.png" alt="Generic placeholder image" />
       </Media>
 
       <Media body>
-        <Media heading className="mb-0" style={{ fontSize: '33px', color: theme.logoTextColor1 }}>
+        <Media heading className="mb-0 header-1-text" style={{ fontSize: '33px', color: theme.logoTextColor1 }}>
           Surface Group
         </Media>
-        <div style={{ letterSpacing: '8.6px', color: theme.logoTextColor2 }}>
+        <div className="header-2-text" style={{ letterSpacing: '8.6px', color: theme.logoTextColor2 }}>
         International
         </div>
       </Media>

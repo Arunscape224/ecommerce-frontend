@@ -28,19 +28,16 @@ const AdminDashboard = () => {
     return (
     <Container>
         <Row>
-            <Col xs={12}>
-                <h1>{firstName + ' ' + lastName}</h1>
+            <Col xs={12} className="p-5 text-center">
+                <h1>Welcome, {firstName + ' ' + lastName}!</h1>
+                <em>Admin Dashboard</em>
             </Col>
         </Row>
-        <Row>
-            <Col xs={12}>
-                <em>Admin Dashboard</em>
-            </Col>  
-        </Row>
+   
 
       <Row>
       <Col>
-                    <h3>There are {orders.length} orders</h3>
+                    <h3>There are {orders.length ? orders.length : <span>....</span>} orders</h3>
                 </Col>
       </Row>
        <Row>

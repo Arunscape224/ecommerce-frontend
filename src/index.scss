@@ -10,6 +10,11 @@ body {
     margin-bottom: 0;
   }
 
+  .braintree-heading {
+    text-align: center !important;
+    width: 100%
+  }
+
   .logo-header {
     font-family: "Texgyre Pagella" !important;
   }
@@ -24,10 +29,7 @@ body {
     color: pink!important
   }
 
-  .container-fluid {
-    padding-left: 0;
-    padding-right: 0;
-  }
+
 
   .jumbotron {
     background-color: white;
@@ -123,12 +125,7 @@ $i: 0;
     
   }
 
-  #name-price-responsive {
-      flex-direction: row !important;
-      align-items: center;
-      margin: 10px;
-      width: 100% !important;
-  }
+
   
 
 
@@ -146,6 +143,7 @@ $i: 0;
   height: 160px;
   width: 5076px;
   opacity: 0.1;
+  // width: 100%;
   animation: slide 60s linear infinite;
 }
 .sliding-background-reverse {
@@ -153,6 +151,7 @@ $i: 0;
   height: 160px;
   width: 5076px;
   opacity: 0.1;
+  // width: 100%;
   animation: slidereverse 60s linear infinite;
 }
 
@@ -176,6 +175,7 @@ $i: 0;
   background-size: cover;
   min-height: 320px;
   max-height: 320px;
+  
 }
 
 #contact-form-container {
@@ -203,4 +203,87 @@ $i: 0;
     transform: translate3d(0, 0, 0);
   }
 }
+
+@media(max-width: 414px) {
+  .card-slider-container {
+    display: none !important
+  }
+  .sliding-background {
+    width: 100%
+  }
+  .sliding-background-reverse {
+    width: 100%
+  }
+  .header-1-text {
+    font-size: 1.3em !important;
+  }
+  .header-2-text {
+    font-size: 0.7em !important;
+    letter-spacing: 8px !important;
+  }
+  .logo {
+    width: 40px !important;
+  }
+
+  
+}
+
+
+@media(max-width: 360px) {
+
+  .header-1-text {
+    font-size: 1.2em !important;
+  }
+  .header-2-text {
+    font-size: 0.6em !important;
+    letter-spacing: 8px !important;
+  }
+  .logo {
+    width: 45px !important;
+  }
+
+  
+}
+
+
+@media(max-width: 500px) {
+  .cart-item {
+    border: 2px solid;
+    // border-color: orange;
+    padding: 10px;
+    margin: 10px;
+  }
+  .responsive-column {
+    align-items: flex-start !important;
+  display: flex !important;
+    justify-content: flex-start !important;
+    // background-color: orange;
+    margin: 0;
+    padding: 0;
+  }
+  #name-price-responsive {
+    // flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    // margin: 10px;
+    
+    width: 100% !important;
+   
+}
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  //your styles here
+  .card-slider-container {
+    display: none !important
+  }
+
+  .sliding-background-reverse {
+    width: 100%
+  }
+
+  .sliding-background {
+    width: 100%
+  }
+ }
 

@@ -18,17 +18,18 @@ const CartItem = ({ product, updateCartItems }) => {
     }
 
     return (
-        <Row>
+        <Row className="cart-item mb-4">
 
         <div className="d-flex justify-content-between">
-        <div className="col-6 d-flex align-items-center responsive-column">
+        <div className="col-6 d-flex align-items-between responsive-column">
            <Col xs={6} className="d-flex flex-column justify-content-center align-items-center">
                 <Link to={`product/${product._id}`}>
                     <Image product={product} url="product" />
                 </Link>
             </Col>
-            <Col xs={6} id="name-price-responsive" className="d-flex flex-column justify-content-center">
-                <h4>{product.name}</h4>
+            <Col xs={6} id="name-price-responsive" className="d-flex w-100 flex-column justify-content-center">
+                <h4 className="m-0">{product.name}</h4>
+                <div style={{fontSize: '15px'}}>{product.size}</div>
                 <p>${product.price}</p>
             </Col>
            </div>

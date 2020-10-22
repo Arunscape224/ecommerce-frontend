@@ -19,7 +19,7 @@ const CardSliderContainer = () => {
 
 
     return (
-        <div className="mt-5" style={{marginBottom: '150px'}}>
+        <div className="mt-5 card-slider-container" style={{marginBottom: '150px'}}>
           
           <Col className="d-flex justify-content-between align-items-center  position-absolute" style={{ height: '325px'}}>
             <div className="d-flex justify-content-between w-100 align-items-center" style={{ height: '325px', zIndex: '1000000000000000000000000 !important' }}>

@@ -17,7 +17,7 @@ const Card = ({property}) => {
                 <p className="location">
                     <strong className="mb-1">{name}</strong><br />
                     <div className="mb-3"><em>${price} / {soldPer}</em></div>
-                    <Link to={`/product/${_id}`}><Button style={{zIndex: '9999999999999 !important', backgroundImage: `linear-gradient(to right, ${theme.text_color} 0%, ${theme.status === 'light' ? '#9BA7A8' : '#968c77'} 100%)`}}>View Product</Button></Link>
+                    <Link to={`/product/${_id}`}><Button style={{zIndex: '9999999999999 !important', backgroundImage: `linear-gradient(to right, ${theme.text_color} 0%, ${theme.status === 'light' ? '#9BA7A8' : '#968c77'} 100%)`, color: theme.header_color}}>View Product</Button></Link>
                     
                 </p>
                

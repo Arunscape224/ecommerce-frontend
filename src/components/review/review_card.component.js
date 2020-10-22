@@ -4,6 +4,7 @@ import Rating from 'react-rating'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faStar as faStarO } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Moment from 'moment';
 
 const ReviewCard = ({ review, theme }) => {
     const { createdAt, rating, subject, textBody, userName, userTrade } = review
@@ -24,7 +25,7 @@ const ReviewCard = ({ review, theme }) => {
             
                     
                    <div>
-                       {createdAt}
+                       {Moment(createdAt).format('MM/DD/YYYY')}
                    </div>
                     
                 </div>

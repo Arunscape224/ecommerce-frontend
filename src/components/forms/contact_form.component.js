@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Row, Col, Form, Button, FormGroup, Input } from 'reactstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom";
+import emailjs from 'emailjs-com'
+
+import { Alert } from 'reactstrap';
 
 const ContactForm = () => {
     
@@ -15,6 +18,10 @@ const ContactForm = () => {
         message: ''
     })
 
+    const [visible, setVisible] = useState(false);
+
+    const onDismiss = () => setVisible(false);
+
     const { contactEmail, subject, message } = values
 
     const handleChange = name => event => {
@@ -22,17 +29,33 @@ const ContactForm = () => {
         setValues({...values, [name]: value})
     }
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault()
-    //     dispatch(loginUser(values)).then((res) => {
-    //         res.data.user.admin ? history.push('/admin/dashboard') : history.push('/user/dashboard')
-    //     }).catch((err) => alert("invalid login"))
-    // }
+    
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        // console.log(process.env.REACT_APP_USER_ID)
+        emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, event.target, process.env.REACT_APP_USER_ID).then((result) => {
+            console.log(result.text)
+            setValues({
+                contactEmail: '',
+                subject: '',
+                message: ''
+            })
+            setVisible(true)
+        }, (error) => { 
+            console.log(error.text)
+         } )
+        
+
+        // 
+    }
 
     return (
+        <div>
         <Form
         className="w-100"
-        //  onSubmit={handleSubmit}
+         onSubmit={handleSubmit}
          >
                         <div className="d-flex flex-column w-100" 
                              style={{ marginTop: '1rem' }}>
@@ -93,8 +116,14 @@ const ContactForm = () => {
                          </Col>
                      </Row>
                      </div>
+                     
                 
                 </Form>
+
+                <Alert color="success" isOpen={visible} toggle={onDismiss}>
+                    Thank you for your submission! We'll contact you as soon as possible.
+                </Alert>
+                </div>
     )
 }
 

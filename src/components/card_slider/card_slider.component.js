@@ -20,7 +20,7 @@ const CardSlider = ({ products }) => {
                    }}>
                        
             {
-                products ? products.map((property) => <Card onClick={() => console.log(property._id)} key={property._id} property={property} />) : <div>Loading</div>
+                products.length ? products.map((property) => <Card onClick={() => console.log(property._id)} key={property._id} property={property} />) : <h3 className="p-3">...Loading</h3>
             }
             </CardSliderWrapper>
         </CardsSlider>

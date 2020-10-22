@@ -7,9 +7,8 @@ import {
     processPayment 
 } from '../../actions/braintree.action'
 import { createOrder } from '../../actions/order.action'
-// import { processPayment } from '../../helper_methods/index'
 import DropIn from 'braintree-web-drop-in-react'
-import { Container, Col, Row, Button, Input, InputGroup } from 'reactstrap'
+import { Container, Col, Row, Button, Input } from 'reactstrap'
 
 const CheckoutContainer = ({ products }) => {
     const dispatch = useDispatch()

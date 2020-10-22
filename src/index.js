@@ -5,6 +5,10 @@ import Routes from './routes';
 import { Provider } from 'react-redux'
 import { store } from './store'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import dotenv from 'dotenv'
+dotenv.config()
+
+
 ReactDOM.render(
   <StrictMode>
     <Provider store={store}>
