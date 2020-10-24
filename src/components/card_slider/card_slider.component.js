@@ -4,6 +4,8 @@ import Card from './card.component'
 import { useSelector } from 'react-redux'
 import { CardsSlider, GradientWrapper, CardSliderWrapper } from '../styles/card_slider.styles'
 import { getTheme } from '../../helper_methods/index'
+import { Spinner } from 'reactstrap';
+
 const CardSlider = ({ products }) => {
 
     const theme = useSelector(state => state.theme)
@@ -20,7 +22,8 @@ const CardSlider = ({ products }) => {
                    }}>
                        
             {
-                products.length ? products.map((property) => <Card onClick={() => console.log(property._id)} key={property._id} property={property} />) : <h3 className="p-3">...Loading</h3>
+                products.length ? products.map((property) => <Card onClick={() => console.log(property._id)} key={property._id} property={property} />) : <Spinner style={{ color: theme.text_color, width: '3rem', height: '3rem' }} />
+
             }
             </CardSliderWrapper>
         </CardsSlider>

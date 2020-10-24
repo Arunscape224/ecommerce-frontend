@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../actions/product.action'
 import ShopCard from '../components/product/shop_card.component'
-
+import { Spinner } from 'reactstrap';
 const Shop = () => {
     const dispatch = useDispatch()
     const products = useSelector(state =>  state.products)
@@ -24,7 +24,7 @@ const Shop = () => {
                     <Row>
                         <div className="grid-container">
                         {
-                          products.data.length ? products.data.map((product) => <Link key={product._id} to={`/product/${product._id}`}><ShopCard product={product}/></Link>) : <h1>Loading...</h1>
+                          products.data.length ? products.data.map((product) => <Link key={product._id} to={`/product/${product._id}`}><ShopCard product={product}/></Link>) : <Spinner style={{ color: theme.text_color, width: '3rem', height: '3rem' }} />
                         }
                         </div>
                     </Row>
