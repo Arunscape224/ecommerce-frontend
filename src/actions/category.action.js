@@ -1,14 +1,13 @@
 import axios from 'axios'
 import { GET_CATEGORIES, GET_CATEGORIES_SUCCESS, GET_CATEGORIES_ERR, CREATE_CATEGORY, CREATE_CATEGORY_SUCCESS } from '../action_types/category.types'
-
-const url = "http://localhost:8000/api/categories/all"
+import { API } from '../config'
 
 export const getCategories = () => {
     return async dispatch => {
         dispatch({
             type: GET_CATEGORIES,
         })
-        return await axios.get(url)
+        return await axios.get(`${API}/categories/all`)
                 .then(res => {
                     dispatch({
                         type: GET_CATEGORIES_SUCCESS,
@@ -35,7 +34,7 @@ export const createCategory = (category, userId, token) => {
         const headers = { Authorization: `Bearer ${token}` };
         return await axios({
             method: 'post',
-            url: `http://localhost:8000/api/category/create/${userId}`,
+            url: `${API}/category/create/${userId}`,
             headers,
             data: category
           })

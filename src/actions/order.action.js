@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { CREATE_ORDER, CREATE_ORDER_SUCCESS, LIST_ORDERS, GET_STATUS_VALUES, UPDATE_STATUS_VALUE } from '../action_types/order.types'
+import { API } from '../config'
 
 export const createOrder = (orderData, userId, token) => {
     return async (dispatch) => {
@@ -9,7 +10,7 @@ export const createOrder = (orderData, userId, token) => {
         })
         // again, axios is giving me issues with this one...i'll come back to this.
         // also, CREATE_ORDER is not returning a correct response...fix that as well 
-        return await fetch(`http://localhost:8000/api/order/create/${userId}`, {
+        return await fetch(`${API}/order/create/${userId}`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -47,7 +48,7 @@ export const listOrders = (userId, token) => {
         const headers = { Authorization: `Bearer ${token}` };
         return await axios({
             method: 'get',
-            url: `http://localhost:8000/api/order/list/${userId}`,
+            url: `${API}/order/list/${userId}`,
             headers
             })
             .then(res => {
@@ -67,7 +68,7 @@ export const getStatusValues = (userId, token) => {
         const headers = { Authorization: `Bearer ${token}` };
         return await axios({
             method: 'get',
-            url: `http://localhost:8000/api/order/status-values/${userId}`,
+            url: `${API}/order/status-values/${userId}`,
             headers
             })
             .then(res => {
@@ -84,7 +85,7 @@ export const updateStatusValue = (userId, token, orderId, status) => {
         await dispatch({
             type: UPDATE_STATUS_VALUE,
         })
-        return await fetch(`http://localhost:8000/api/order/${orderId}/status/${userId}`, {
+        return await fetch(`${API}/order/${orderId}/status/${userId}`, {
             method: "PUT",
             headers: {
                 Accept: 'application/json',

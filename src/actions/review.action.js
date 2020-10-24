@@ -1,5 +1,6 @@
 import { CREATE_REVIEW, CREATE_REVIEW_SUCCESS, GET_REVIEWS, GET_REVIEWS_SUCCESS, GET_REVIEWS_ERR } from '../action_types/review.types'
 import axios from 'axios'
+import { API } from '../config'
 
 export const createReview = (review, userId, token) => {
     return async (dispatch) => {
@@ -10,7 +11,7 @@ export const createReview = (review, userId, token) => {
         const headers = { Authorization: `Bearer ${token}` };
         return await axios({
             method: 'post',
-            url: `http://localhost:8000/api/review/create/${userId}`,
+            url: `${API}/review/create/${userId}`,
             headers,
             data: review
           })
@@ -34,7 +35,7 @@ export const getReviews = (productId) => {
         dispatch({
             type: GET_REVIEWS,
         })
-        return await axios.get(`http://localhost:8000/api/product/reviews/${productId}`)
+        return await axios.get(`${API}/product/reviews/${productId}`)
                 .then(res => {
                     dispatch({
                         type: GET_REVIEWS_SUCCESS,

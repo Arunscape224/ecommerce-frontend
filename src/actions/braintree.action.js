@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { BUY, BUY_SUCCESS, BUY_ERR, PROCESS_PAYMENT, PROCESS_PAYMENT_SUCCESS, PROCESS_PAYMENT_ERR } from '../action_types/braintree.types'
-
+import { API } from '../config'
 export const getBraintreeToken = (userId, token) => {
     return async dispatch => {
         await dispatch({
@@ -9,7 +9,7 @@ export const getBraintreeToken = (userId, token) => {
         const headers = { Authorization: `Bearer ${token}` };
         return await axios({
             method: 'get',
-            url: `http://localhost:8000/api/braintree/getToken/${userId}`,
+            url: `${API}/braintree/getToken/${userId}`,
             headers
             })
                 .then(res => {
@@ -41,7 +41,7 @@ export const processPayment = (userId, token, paymentData) => {
         //     headers,
         //     data: JSON.stringify(paymentData)
         //     })
-        return await fetch(`http://localhost:8000/api/braintree/payment/${userId}`, {
+        return await fetch(`${API}/braintree/payment/${userId}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',

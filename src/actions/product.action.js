@@ -1,12 +1,13 @@
 import { GET_PRODUCTS, GET_PRODUCTS_SUCCESS, GET_SINGLE_PRODUCT, GET_SINGLE_PRODUCT_SUCCESS, GET_SINGLE_PRODUCT_ERR, GET_PRODUCTS_ERR, CREATE_PRODUCT, CREATE_PRODUCT_SUCCESS, DELETE_SINGLE_PRODUCT, UPDATE_SINGLE_PRODUCT } from '../action_types/product.types'
 import axios from 'axios'
+import { API } from '../config'
 
 export const getProducts = () => {
     return async dispatch => {
         dispatch({
             type: GET_PRODUCTS,
         })
-        return await axios.get('http://localhost:8000/api/products')
+        return await axios.get(`${API}/products`)
                 .then(res => {
                     dispatch({
                         type: GET_PRODUCTS_SUCCESS,
@@ -27,7 +28,7 @@ export const getSingleProduct = (product) => {
         dispatch({
             type: GET_SINGLE_PRODUCT,
         })
-        return await axios.get(`http://localhost:8000/api/product/${product}`)
+        return await axios.get(`${API}/product/${product}`)
                 .then(res => {
                     dispatch({
                         type: GET_SINGLE_PRODUCT_SUCCESS,
@@ -53,7 +54,7 @@ export const createProduct = (product, userId, token) => {
         const headers = { Authorization: `Bearer ${token}` };
         return await axios({
             method: 'post',
-            url: `http://localhost:8000/api/product/create/${userId}`,
+            url: `${API}/product/create/${userId}`,
             headers,
             data: product
           })
@@ -77,7 +78,7 @@ export const deleteProduct = (productId, userId, token) => {
         await dispatch({
             type: DELETE_SINGLE_PRODUCT,
         })
-        return await fetch(`http://localhost:8000/api/product/delete/${productId}/${userId}`, {
+        return await fetch(`${API}/product/delete/${productId}/${userId}`, {
             method: "DELETE",
             headers: {
                 Accept: 'application/json',
@@ -127,7 +128,7 @@ export const updateProduct = (productId, userId, token, product) => {
         const headers = { Authorization: `Bearer ${token}` };
         return await axios({
             method: 'put',
-            url: `http://localhost:8000/api/product/update/${productId}/${userId}`,
+            url: `${API}/product/update/${productId}/${userId}`,
             headers,
             data: product
           })

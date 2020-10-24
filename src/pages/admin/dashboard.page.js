@@ -6,13 +6,15 @@ import { listOrders } from '../../actions/order.action'
 import { useHistory } from 'react-router-dom'
 import {getPurchaseHistory} from '../../actions/user.action'
 // import {getPurchaseHistory} from '../../helper_methods/index'
-import {  useDispatch } from 'react-redux'
+import {  useDispatch, useSelector } from 'react-redux'
+import { Spinner } from 'reactstrap';
 
 
 const AdminDashboard = () => {
     const dispatch = useDispatch()
     const { user: { firstName, lastName, _id }, token } = isAuthenticated()
     const history = useHistory()
+    const theme = useSelector(state => state.theme)
     const [orders, setOrders] = useState([])
     const [purchaseHistory, setPurchaseHistory] = useState([])
     const loadOrders = () => {
@@ -37,7 +39,7 @@ const AdminDashboard = () => {
 
       <Row>
       <Col>
-                    <h3>There are {orders.length ? orders.length : <span>....</span>} orders</h3>
+                    <h3>There are {orders.length ? orders.length :  <Spinner style={{ color: theme.text_color, width: '2rem', height: '2rem' }} />} orders</h3>
                 </Col>
       </Row>
        <Row>

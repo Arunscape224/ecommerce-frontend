@@ -1,6 +1,7 @@
 import { CREATE_USER, LOGIN_USER, LOGIN_USER_SUCCESS, CREATE_USER_SUCCESS, LOGOUT_USER, UPDATE_USER, UPDATE_LS_USER, GET_PURCHASE_HISTORY, GET_PURCHASE_HISTORY_SUCCESS } from '../action_types/user.types'
 import axios from 'axios'
 import { authenticate, signout } from '../helper_methods/index'
+import { API } from '../config'
 
 
 export const createUser = (user) => {
@@ -12,7 +13,7 @@ export const createUser = (user) => {
         })
         return await axios({
             method: 'post',
-            url: 'http://localhost:8000/api/signup',
+            url: `${API}/signup`,
             data: user
           })
         .then(response => {
@@ -38,7 +39,7 @@ export const loginUser = (user) => {
         })
         return await axios({
             method: 'post',
-            url: 'http://localhost:8000/api/login',
+            url: `${API}/login`,
             data: user
           })
         .then(response => {
@@ -73,7 +74,7 @@ export const getPurchaseHistory = (userId, token) => {
         dispatch({
             type: GET_PURCHASE_HISTORY,
         })
-        return fetch(`http://localhost:8000/api/orders/by/user/${userId}`, {
+        return fetch(`${API}/orders/by/user/${userId}`, {
             method: "GET",
             headers: {
                 Accept: 'application/json',
@@ -97,7 +98,7 @@ export const updateUser = (userId, token, updatedUser, next) => {
         await dispatch({
             type: UPDATE_USER,
         })
-        return await fetch(`http://localhost:8000/api/user/${userId}`, {
+        return await fetch(`${API}/user/${userId}`, {
             method: "PUT",
             headers: {
                 Accept: 'application/json',
