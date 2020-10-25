@@ -35,7 +35,7 @@ export const GradientWrapper = styled.div`
         position: absolute;
         top: 0;
         left: 0;
-        z-index: ${props => props.zInd};
+        z-index: -1;
     }
     &:after {
         
