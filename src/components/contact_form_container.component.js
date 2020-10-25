@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 const ContactFormContainer = () => {
     const theme = useSelector(state => state.theme)
  return (
-                  <Row id='contact-form-container' className="justify-content-center align-items-center mt-5 border-top p-5" id="contact-form-container" style={{backgroundImage: `linear-gradient(to bottom, rgba(245, 246, 252, 0.52), ${theme.background_color}), url("https://cdn.shopify.com/s/files/1/0265/0039/9213/files/calacatta-marble.jpg?v=1603025257")`}}>
+                  <Row id='contact-form-container' className="justify-content-center align-items-center mt-5 border-top pt-5" id="contact-form-container" style={{backgroundImage: `linear-gradient(to bottom, rgba(245, 246, 252, 0.52), ${theme.background_color}), url("https://cdn.shopify.com/s/files/1/0265/0039/9213/files/calacatta-marble.jpg?v=1603025257")`}}>
                        
           <Col sm="6" className="justify-content-center align-items-center">
           

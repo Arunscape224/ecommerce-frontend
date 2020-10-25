@@ -18,7 +18,7 @@ const Home = () => {
       
           
       <div  className="text-center mt-5">
-<h1 style={{ color: theme.text_color }}>Our Favorites</h1>
+<h1 style={{ color: theme.text_color }} className="our-favorites">Our Favorites</h1>
 </div>
       <CardSliderContainer/>
       <LoopingBanner theme={theme} />

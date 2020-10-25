@@ -17,14 +17,18 @@ const Footer = () => {
 
 
         {theme.status === 'light' ?
-                  <div  className="d-flex align-items-center mt-4 ml-4" onClick={() => dispatch(toggleTheme(darkMode)).then(() => {
-                 
+                  <div style={{cursor: 'pointer'}} className="d-flex flex-column mt-4 ml-4" onClick={() => dispatch(toggleTheme(darkMode)).then(() => {
+                    
                     setTheme(darkMode)
-                  })}><FontAwesomeIcon  style={{ color: theme.text_color }} className="nav-icons" icon={faSun}/></div> :
-                  <div  className="d-flex align-items-center mt-4 ml-4" onClick={() => dispatch(toggleTheme(lightMode)).then(() => {
+                  })}>
+                    <FontAwesomeIcon  style={{ color: theme.text_color }} className="nav-icons" icon={faSun}/>
+                    <div>light mode</div>
+                  </div> :
+                  <div style={{cursor: 'pointer'}} className="d-flex flex-column mt-4 ml-4" onClick={() => dispatch(toggleTheme(lightMode)).then(() => {
                   
                     setTheme(lightMode)
-                  })}><FontAwesomeIcon  style={{ color: theme.text_color }} className="nav-icons" icon={faMoon}/></div>
+                  })}>
+                    <FontAwesomeIcon  style={{ color: theme.text_color }} className="nav-icons" icon={faMoon}/><div>dark mode</div></div>
                 } 
             
 

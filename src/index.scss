@@ -229,19 +229,20 @@ $i: 0;
 }
 
 
-@media(max-width: 360px) {
+@media(max-width: 321px) {
 
   .header-1-text {
-    font-size: 1.2em !important;
+    font-size: 1.09em !important;
   }
   .header-2-text {
-    font-size: 0.6em !important;
-    letter-spacing: 8px !important;
+    font-size: 0.5em !important;
+    letter-spacing: 7.5px !important;
   }
   .logo {
-    width: 45px !important;
+    width: 1.5em !important;
   }
 
+  
   
 }
 
@@ -253,6 +254,8 @@ $i: 0;
     padding: 10px;
     margin: 10px;
   }
+  
+
   .responsive-column {
     align-items: flex-start !important;
   display: flex !important;
@@ -278,6 +281,11 @@ $i: 0;
     display: none !important
   }
 
+  .our-favorites {
+    display: none !important;
+  }
+
+ 
   .sliding-background-reverse {
     width: 100%
   }
