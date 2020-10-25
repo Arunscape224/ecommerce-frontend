@@ -13,7 +13,7 @@ const CardSlider = ({ products }) => {
     const lsTheme = getTheme()
     return (
         
-        <GradientWrapper zInd={lsTheme.status === "light" ? '100000' : '-1'} gradient1={theme.gradient_1} gradient0={theme.gradient_0} backgroundColor={theme.background_color}>
+        <GradientWrapper gradient1={theme.gradient_1} gradient0={theme.gradient_0} backgroundColor={theme.background_color}>
            
             <CardsSlider  backgroundColor={theme.backgroundColor} borderColor={theme.text_color} className={`cards-slider active-slide-${slider.property.index}`}>
             <CardSliderWrapper  className="cards-slider-wrapper"
