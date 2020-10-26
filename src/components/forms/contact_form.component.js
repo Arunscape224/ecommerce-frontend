@@ -65,6 +65,7 @@ const ContactForm = () => {
                              style={{ marginBottom: '1rem' }}>
                             <FormGroup>
                                 <Input  type="email"
+                                        required
                                         onChange={handleChange('contactEmail')}
                                         style={{
                                             border: `2px solid ${theme.text_color}`
@@ -80,6 +81,7 @@ const ContactForm = () => {
                              style={{ marginBottom: '1rem' }}>
                             <FormGroup>
                                 <Input  type="text"
+                                        required
                                         onChange={handleChange('subject')}
                                         style={{
                                             border: `2px solid ${theme.text_color}`
@@ -96,6 +98,7 @@ const ContactForm = () => {
                             <FormGroup>
                                 <Input  type="textarea"
                                         onChange={handleChange('message')}
+                                        required
                                         style={{
                                             border: `2px solid ${theme.text_color}`
                                         }} 
